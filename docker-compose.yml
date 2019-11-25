@@ -9,14 +9,14 @@ services:
     ports:
       - "6200:6200"
     volumes:
-      - ./FIS-backend:/usr/src/app
+      - ./FIS-backend:/api
     depends_on:
       - mongodb
   frontend:
     build: ./FIS-frontend/
     ports:
-      - "3000:3000"
+      - "8000:8000"
     volumes:
-      - ./FIS-frontend:/usr/src/app
+      - ./FIS-frontend:/client
     depends_on:
       - backend
