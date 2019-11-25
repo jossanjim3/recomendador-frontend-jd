@@ -1,0 +1,22 @@
+version: '2'
+services:
+  mongodb:
+    image: "mongo"
+    ports:
+     - "27017:27017"
+  backend:
+    build: ./FIS-backend/
+    ports:
+      - "6200:6200"
+    volumes:
+      - ./FIS-backend:/usr/src/app
+    depends_on:
+      - mongodb
+  frontend:
+    build: ./FIS-frontend/
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./FIS-frontend:/usr/src/app
+    depends_on:
+      - backend
