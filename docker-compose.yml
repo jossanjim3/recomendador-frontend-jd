@@ -11,6 +11,7 @@ services:
       - "6200:6200"
     volumes:
       - ./FIS-backend:/api
+      - /api/node_modules
     depends_on:
       - mongodb
   frontend:
@@ -19,5 +20,6 @@ services:
       - "8000:8000"
     volumes:
       - ./FIS-frontend:/client
+      - /client/node_modules
     depends_on:
       - backend
