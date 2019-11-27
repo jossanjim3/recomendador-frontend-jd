@@ -6,7 +6,9 @@ services:
     ports:
      - "27017:27017"
   backend:
-    build: ./FIS-backend/
+    build: 
+      context: ./FIS-backend/
+      dockerfile: Dockerfile.backend
     ports:
       - "6200:6200"
     volumes:
@@ -15,7 +17,9 @@ services:
     depends_on:
       - mongodb
   frontend:
-    build: ./FIS-frontend/
+    build: 
+      context: ./FIS-frontend/
+      dockerfile: Dockerfile.web
     ports:
       - "8000:8000"
     volumes:
