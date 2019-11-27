@@ -5,6 +5,8 @@ services:
     restart: always
     ports:
      - "27017:27017"
+    volumes:
+      - data-volume:/data/db
   backend:
     build: 
       context: ./FIS-backend/
@@ -27,3 +29,6 @@ services:
       - /client/node_modules
     depends_on:
       - backend
+
+volumes:
+  data-volume:
