@@ -1,0 +1,11 @@
+Me he descargado el proyecto y no funciona al ejecutar npm start. Aparece el siguiente error
+    - "react-scripts" no se reconoce como un comando interno o externo,
+        npm ERR! code ELIFECYCLE
+        npm ERR! errno 1
+        npm ERR! Exit status 1
+        npm ERR!
+        npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+        npm WARN Local package.json exists, but node_modules missing, did you mean to install?
+
+        npm ERR! A complete log of this run can be found in:
+        npm ERR!     C:\Users\jdsj6\AppData\Roaming\npm-cache\_logs\2019-12-03T13_20_13_961Z-debug.log
