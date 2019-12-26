@@ -13,12 +13,7 @@ class Recomendaciones extends React.Component{
 
     render(){
         return (
-            <div id="recomendacion_slides">
-                {/* {this.state.recomendaciones.map((recomendacion) => 
-                    <Recomendacion key = {recomendacion.id} recomendacion = {recomendacion} />
-                    )
-                }   */}       
-
+            <div id="recomendacion_slides"> 
                 <Slider recomendacionesSlide = {this.props.recomendaciones}></Slider>
             </div>
             

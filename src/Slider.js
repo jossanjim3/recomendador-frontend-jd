@@ -15,17 +15,14 @@ class Slider extends React.Component{
 
     render(){
         return (
-            <div id="recomendacion_slides">
+            <div id="slider">
                    
-                    <div>
-                        <Whirligig visibleSlides={3} gutter="1em">
-                            {this.state.recomendacionesSlide.map((recomendacion) => 
-                            <Recomendacion key = {recomendacion.id} recomendacion = {recomendacion} />
-                            )
-                        } 
-                        </Whirligig>
-                    </div>
+                <Whirligig visibleSlides={this.state.recomendacionesSlide.length / 4} gutter="1em">
+                    {this.state.recomendacionesSlide.map((recomendacion) => 
+                    <Recomendacion key = {recomendacion.id} recomendacion = {recomendacion} />
                     )
+                } 
+                </Whirligig>
 
             </div>
             
