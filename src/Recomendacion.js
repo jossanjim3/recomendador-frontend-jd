@@ -24,8 +24,17 @@ class Recomendacion extends React.Component{
             tituloRecomendacion = this.state.recomendacion.name;
         }
 
-        let fechaPubli;
+        // algunas pelis o series no tiene overview
+        var overviewRecomendacion = "";
+        var overview = this.state.recomendacion.overview;
+        if (overview) {
+            overviewRecomendacion = overview;
+        } else {
+            overviewRecomendacion = "No está disponible actualmente...";
+        }
+
         // las series no tienen fecha de publicacion
+        let fechaPubli;        
         if (this.state.recomendacion.release_date) {
             fechaPubli =  <tr>
                             <td>Fecha:</td>
@@ -66,7 +75,7 @@ class Recomendacion extends React.Component{
                             </tr>
                             
                             {fechaPubli}
-                            
+
                             <tr>
                                 <td>Género:</td>
                                 <td className="datos_recomendacion_celda">{this.state.recomendacion.genre_ids}</td>
@@ -77,7 +86,7 @@ class Recomendacion extends React.Component{
                     <BackSide
                         style={{ backgroundColor: '#fff'}}>
 
-                        <textarea disabled className="overview">{this.state.recomendacion.overview}</textarea>
+                        <textarea disabled className="overview">{overviewRecomendacion}</textarea>
 
                     </BackSide>
                 </Flippy>

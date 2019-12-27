@@ -830,11 +830,12 @@ function App() {
   ];
 
   return (
-    <div id="recomendaciones">
-      <h3>Películas recomendadas</h3>      
-      <Recomendaciones recomendaciones = {peliculas}/>
-      <h3>Series recomendadas</h3>  
-      <Recomendaciones recomendaciones = {series} />
+    <div id="recomendaciones">    
+
+      <Recomendaciones recomendaciones = {peliculas} titulo = "Películas"/>
+      
+      <Recomendaciones recomendaciones = {series} titulo = "Series"/>
+
     </div>
   );
   

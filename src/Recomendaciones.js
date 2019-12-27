@@ -7,7 +7,8 @@ class Recomendaciones extends React.Component{
         super(props);
         this.state = {
             errorInfo : null,
-            recomendaciones: this.props.recomendaciones,            
+            recomendaciones: this.props.recomendaciones,        
+            titulo : this.props.titulo    
         };
     }    
 
@@ -15,7 +16,7 @@ class Recomendaciones extends React.Component{
         
         return (
             <div id="recomendacion_slides">                 
-                <Slider recomendacionesSlide = {this.state.recomendaciones}></Slider>
+                <Slider recomendacionesSlide = {this.state.recomendaciones} titulo = {this.state.titulo}></Slider>
             </div>
             
         );
