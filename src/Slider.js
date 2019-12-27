@@ -21,7 +21,7 @@ class Slider extends React.Component{
     render(){
         return (
             <div id="slider">
-                <select onChange={this._handleChange} className="ant-input selectBox" style={{width: 100}}
+                <select className="browser-default custom-select" onChange={this._handleChange} style={{width: "4em", marginLeft:"1em"}}
                                 placeholder="Select number of..."  ref={ref => {
                                                                     this._select = ref
                                                                     }}
