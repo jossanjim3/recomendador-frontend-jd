@@ -14,6 +14,9 @@ class Recomendacion extends React.Component{
     clickAdd(event){
         var id_recomendacion = event.target.value;
         window.alert("id recurso: " + id_recomendacion);
+
+        // TODO: insetar id recomendacion en lista negra y eliminar elemento del array
+        // OPCIONAL: crear una vista donde aparezcan todas las peliculas o series de la lista negra
     }
 
     render(){
