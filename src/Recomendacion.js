@@ -11,6 +11,11 @@ class Recomendacion extends React.Component{
         };
     }
 
+    clickAdd(event){
+        var id_recomendacion = event.target.value;
+        window.alert("id recurso: " + id_recomendacion);
+    }
+
     render(){
 
         const urlPoster = "http://image.tmdb.org/t/p/w185//" + this.state.recomendacion.backdrop_path;
@@ -55,13 +60,15 @@ class Recomendacion extends React.Component{
                 >
                     <FrontSide
                         style={{backgroundColor: '#fff',}}>
+                        
+                        <button type="button" name="boton_lista_negra" value={this.state.recomendacion.id} class="btn btn-danger boton_lista_negra" title="Añadir a la lista de No Recomendaciones" onClick={this.clickAdd}>X</button>
 
                         <img className="poster" src={urlPoster} alt="texto" title={tituloRecomendacion}/>
                         {/* <span>{this.state.recomendacion.id}</span> */}
 
                         <p className="tituloRecomendacion">
                             {tituloRecomendacion}
-                        </p>
+                        </p>                        
 
                         <hr></hr>
                         <table>

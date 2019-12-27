@@ -29,6 +29,9 @@ class Recomendaciones extends React.Component{
         Promise.all([
             fetch('https://api.themoviedb.org/3/movie/popular?api_key=18268e82edbd92497a6d18853ddf8c57&language=es-ES'),
             fetch('https://api.themoviedb.org/3/tv/popular?api_key=18268e82edbd92497a6d18853ddf8c57&language=es-ES')
+
+            //fetch('http://localhost:3000/recomendador/aleatorio/peliculas'),
+            //fetch('http://localhost:3000/recomendador/aleatorio/series')
         ])
         .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
         .then(([data1, data2]) => this.setState({
@@ -867,13 +870,14 @@ class Recomendaciones extends React.Component{
          
         if (this.state.isLoading) {
             return <p>Loading ...</p>;
-          }
-          return (
-                 <div id="recomendacion_slides">                 
-                    <Slider recomendacionesSlide = {this.state.peliculas} titulo = "Películas"></Slider>
-                    <Slider recomendacionesSlide = {this.state.series} titulo = "Series"></Slider>
-                </div>
-          );
+        }
+
+        return (
+                <div id="recomendacion_slides">                 
+                <Slider recomendacionesSlide = {this.state.peliculas} titulo = "Películas"></Slider>
+                <Slider recomendacionesSlide = {this.state.series} titulo = "Series"></Slider>
+            </div>
+        );
        
     }
     

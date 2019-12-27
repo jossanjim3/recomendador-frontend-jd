@@ -79,3 +79,7 @@
     padding-left: 0.5em;
     color:gray;
 }
+
+.boton_lista_negra {
+  position: absolute;
+}
