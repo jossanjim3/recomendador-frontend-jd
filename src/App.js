@@ -2,7 +2,6 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Recomendaciones from './Recomendaciones';
-import Selector from './Selector';
 
 function App() {
 
@@ -830,13 +829,10 @@ function App() {
     }
   ];
 
-  var selector = 10;
-
   return (
     <div id="recomendaciones">
-      <h2>Recomendaciones</h2>
-      <Selector />
-      <Recomendaciones recomendaciones = {peliculas} selector = {selector} />
+      <h2>Recomendaciones</h2>      
+      <Recomendaciones recomendaciones = {peliculas}/>
       {/* <Recomendaciones recomendaciones = {series} /> */}
     </div>
   );

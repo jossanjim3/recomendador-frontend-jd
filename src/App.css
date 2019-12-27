@@ -40,6 +40,8 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  padding-top: 0.3em;
+  font-weight: bold;
 }
 
 .tooltip {
