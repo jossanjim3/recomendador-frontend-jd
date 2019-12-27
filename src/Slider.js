@@ -9,6 +9,7 @@ class Slider extends React.Component{
         this.state = {
             errorInfo : null,
             recomendacionesSlide: this.props.recomendacionesSlide,
+            selector : this.props.selector,
             slideIndex : 1
         };
     }
@@ -18,8 +19,8 @@ class Slider extends React.Component{
             <div id="slider">
                    
                 <Whirligig visibleSlides={this.state.recomendacionesSlide.length / 4} gutter="1em">
-                    {this.state.recomendacionesSlide.map((recomendacion) => 
-                    <Recomendacion key = {recomendacion.id} recomendacion = {recomendacion} />
+                    {this.state.recomendacionesSlide.slice(0,this.state.selector).map((recomendacion) => 
+                        <Recomendacion key = {recomendacion.id} recomendacion = {recomendacion} />
                     )
                 } 
                 </Whirligig>

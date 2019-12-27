@@ -2,6 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Recomendaciones from './Recomendaciones';
+import Selector from './Selector';
 
 function App() {
 
@@ -416,11 +417,427 @@ function App() {
       "release_date": "2015-12-15"
     }
   ];
+  const series = [
+    {
+      "original_name": "The Mandalorian",
+      "genre_ids": [
+          10759,
+          10765
+      ],
+      "name": "The Mandalorian",
+      "popularity": 501.941,
+      "origin_country": [
+          "US"
+      ],
+      "vote_count": 363,
+      "first_air_date": "2019-11-12",
+      "backdrop_path": "/o7qi2v4uWQ8bZ1tW3KI0Ztn2epk.jpg",
+      "original_language": "en",
+      "id": 82856,
+      "vote_average": 7.9,
+      "overview": "Tras las historias de Jango y Boba Fett, otro guerrero emerge en el universo de Star Wars. 'The Mandalorian' se sitúa después de la caída del Imperio y antes de la aparición de la Primera Orden. Seguimos las tribulaciones de un pistolero solitario en los confines de la galaxia, lejos de la autoridad de la Nueva República...",
+      "poster_path": "/BbNvKCuEF4SRzFXR16aK6ISFtR.jpg"
+  },
+  {
+      "original_name": "The Witcher",
+      "genre_ids": [
+          18,
+          10765
+      ],
+      "name": "The Witcher",
+      "popularity": 363.735,
+      "origin_country": [
+          "PL",
+          "US"
+      ],
+      "vote_count": 142,
+      "first_air_date": "2019-12-20",
+      "backdrop_path": "/bKETHQDD3QoIRTMOP4dfKwisL3g.jpg",
+      "original_language": "en",
+      "id": 71912,
+      "vote_average": 8.3,
+      "overview": "Geralt, un brujo que se dedica a cazar monstruos genéticamente modificados, busca su lugar en un mundo donde a menudo los humanos demuestran ser peores que las bestias.",
+      "poster_path": "/phCNECtEhlyItIkatYEgDgB90tf.jpg"
+  },
+  {
+      "original_name": "Rick and Morty",
+      "genre_ids": [
+          16,
+          35,
+          10765
+      ],
+      "name": "Rick y Morty",
+      "popularity": 220.371,
+      "origin_country": [
+          "US"
+      ],
+      "vote_count": 1602,
+      "first_air_date": "2013-12-02",
+      "backdrop_path": "/mzzHr6g1yvZ05Mc7hNj3tUdy2bM.jpg",
+      "original_language": "en",
+      "id": 60625,
+      "vote_average": 8.6,
+      "overview": "Comedia animada que narra las aventuras de un científico loco Rick Sánchez, que regresa después de 20 años para vivir con su hija, su marido y sus hijos Morty y Summer.",
+      "poster_path": "/qJdfO3ahgAMf2rcmhoqngjBBZW1.jpg"
+  },
+  {
+      "original_name": "Arrow",
+      "genre_ids": [
+          80,
+          18,
+          9648,
+          10759
+      ],
+      "name": "Arrow",
+      "popularity": 171.28,
+      "origin_country": [
+          "US"
+      ],
+      "vote_count": 2937,
+      "first_air_date": "2012-10-10",
+      "backdrop_path": "/dXTyVDTIgeByvUOUEiHjbi8xX9A.jpg",
+      "original_language": "en",
+      "id": 1412,
+      "vote_average": 5.8,
+      "overview": "Después de un violento naufragio y tras haber desaparecido y creído muerto durante cinco años, el multimillonario playboy Oliver Queen es rescatado con vida en una isla del Pacífico. De vuelta en casa en Starling City, Oliver es recibido por su madre, su hermana y su mejor amigo, quienes rápidamente notan que la terrible experiencia sufrida lo ha cambiado. Por otra parte, Oliver trata de ocultar la verdad acerca de en quién se ha convertido mientras trata de enmendar los errores que cometió en el pasado y de reconciliarse con su ex novia, Laurel Lance. Mientras Oliver trata de volver a contactar a las personas de su pasado jugando el papel del mujeriego adinerado, despreocupado y descuidado que solía ser, ayudado por su fiel chofer y guardaespaldas John Diggle, crea en secreto el personaje de un justiciero encapuchado, un vigilante que lucha contra los males de la sociedad tratando de darle a su ciudad la gloria que antes tenía; complicando esta misión, se encuentra el Detective Lance, el padre de Laurel, quien está decidido a poner al vigilante tras las rejas.",
+      "poster_path": "/mo0FP1GxOFZT4UDde7RFDz5APXF.jpg"
+  },
+  {
+      "original_name": "The Flash",
+      "genre_ids": [
+          18,
+          10765
+      ],
+      "name": "The Flash",
+      "popularity": 158.756,
+      "origin_country": [
+          "US"
+      ],
+      "vote_count": 3094,
+      "first_air_date": "2014-10-07",
+      "backdrop_path": "/6ZdQTBy20HzWudZthAV7NkZWfIb.jpg",
+      "original_language": "en",
+      "id": 60735,
+      "vote_average": 6.8,
+      "overview": "Después de que un acelerador de partículas cause una extraña tormenta, al investigador científico de la policía, Barry Allen, le cae un rayo y entra en coma. Meses después despierta con el poder de moverse a súper velocidad permitiéndole ser el ángel de la guardia de Central City. Aunque al principio se siente entusiasmado con sus nuevos poderes, Barry descubre que no es el único “meta-humano” que se originó tras la explosión del acelerador – y no todo el mundo está usando sus nuevos poderes para el bien. Los compañeros del laboratorio STAR dedican su vida a ayudar a Barry a proteger a los inocentes. Por ahora, solo algunos amigos cercanos saben que Barry es, literalmente, el hombre más rápido del mundo, pero no pasará mucho hasta que el mundo conozca que ahora Barry Allen es … Flash.",
+      "poster_path": "/lUFK7ElGCk9kVEryDJHICeNdmd1.jpg"
+  },
+  {
+      "original_name": "プランダラ",
+      "genre_ids": [
+          16,
+          10759,
+          10765
+      ],
+      "name": "Plunderer",
+      "popularity": 142.102,
+      "origin_country": [
+          "JP"
+      ],
+      "vote_count": 0,
+      "first_air_date": "2020-01-08",
+      "backdrop_path": "/7BP3aJUCk8Iv20YFAqHcbXpTMwR.jpg",
+      "original_language": "ja",
+      "id": 93149,
+      "vote_average": 0,
+      "overview": "En el año 305 del calendario de Althea, donde el mundo es gobernado por números, cada humano tiene un \"contador\" marcado en algún lugar de su cuerpo, el cual puede corresponder a cualquier cosa. Sin embargo, cuando cae a cero la persona se ve envuelta por el Abismo. Esto es lo que le sucedió a la madre de Hina que, en un último momento, le pidió que encontrara al legendario Barón Rojo. En su viaje Hina conoce a un extraño espadachín enmascarado llamado Licht Bach.",
+      "poster_path": "/cp1iGqNNy5JRhWbpP3qoANgz1gV.jpg"
+  },
+  {
+      "original_name": "His Dark Materials",
+      "genre_ids": [
+          18,
+          10765
+      ],
+      "name": "La materia oscura",
+      "popularity": 145.964,
+      "origin_country": [
+          "GB"
+      ],
+      "vote_count": 140,
+      "first_air_date": "2019-11-03",
+      "backdrop_path": "/9yKCJTOh9m3Lol2RY3kw99QPH6x.jpg",
+      "original_language": "en",
+      "id": 68507,
+      "vote_average": 7.6,
+      "overview": "Lyra es una huérfana que vive en un universo paralelo en el que la ciencia, la teología y la magia están entrelazadas. La búsqueda de Lyra de un amigo secuestrado descubre un siniestro complot que involucra a niños robados, y se convierte en una búsqueda para comprender un fenómeno misterioso llamado Dust. Más tarde, en su viaje, se une a Will, un niño que posee un cuchillo que puede cortar ventanas entre mundos. A medida que Lyra se entera de la verdad sobre sus padres y su destino profetizado, los dos jóvenes se ven envueltos en una guerra contra los poderes celestiales que se extiende a lo largo de muchos mundos.",
+      "poster_path": "/aF3UVTrSIhz3B0tgHU5yI3bPc5k.jpg"
+  },
+  {
+      "original_name": "Lost in Space",
+      "genre_ids": [
+          18,
+          10759,
+          10765
+      ],
+      "name": "Lost in Space",
+      "popularity": 141.876,
+      "origin_country": [
+          "US"
+      ],
+      "vote_count": 277,
+      "first_air_date": "2018-04-13",
+      "backdrop_path": "/dCm03Ro8FRKcJIy3P27gPT4uEXD.jpg",
+      "original_language": "en",
+      "id": 75758,
+      "vote_average": 7,
+      "overview": "Tras un aterrizaje forzoso en un planeta desconocido, la familia Robinson lucha desesperadamente por sobrevivir y escapar, pero está rodeada de peligros ocultos.",
+      "poster_path": "/y8NJnTXzb4rio9uvVYFVrXEMofU.jpg"
+  },
+  {
+      "original_name": "Vikings",
+      "genre_ids": [
+          18,
+          10759
+      ],
+      "name": "Vikingos",
+      "popularity": 178.644,
+      "origin_country": [
+          "CA"
+      ],
+      "vote_count": 1825,
+      "first_air_date": "2013-03-03",
+      "backdrop_path": "/aq2yEMgRQBPfRkrO0Repo2qhUAT.jpg",
+      "original_language": "en",
+      "id": 44217,
+      "vote_average": 7.5,
+      "overview": "Sigue las aventuras de Ragnar Lothbrok, el héroe más grande de su época. La serie narra las sagas de la banda de hermanos vikingos de Ragnar y su familia, cuando él se levanta para convertirse en el rey de las tribus vikingas. Además de ser un guerrero valiente, Ragnar encarna las tradiciones nórdicas de la devoción a los dioses, la leyenda dice que él era un descendiente directo de Odín, el dios de la guerra y los guerreros.",
+      "poster_path": "/mBDlsOhNOV1MkNii81aT14EYQ4S.jpg"
+  },
+  {
+      "original_name": "Supernatural",
+      "genre_ids": [
+          18,
+          9648,
+          10765
+      ],
+      "name": "Sobrenatural",
+      "popularity": 135.948,
+      "origin_country": [
+          "US"
+      ],
+      "vote_count": 2104,
+      "first_air_date": "2005-09-13",
+      "backdrop_path": "/o9OKe3M06QMLOzTl3l6GStYtnE9.jpg",
+      "original_language": "en",
+      "id": 1622,
+      "vote_average": 7.4,
+      "overview": "Cuando eran niños, Sam y Dean Winchester, perdieron a su madre debido a una misteriosa y demoníaca fuerza supernatural. Posteriormente, su padre los crió para que fueran soldados. Él les enseño sobre el mal que vive en los rincones obscuros y en las carreteras secundarias de América... y también les enseñó como matarlo. Ahora los hermanos Winchester recorren el país en su Chevy Impala del '67, luchando contra todo tipo de amenaza sobrenatural que encuentran en el camino.",
+      "poster_path": "/3iFm6Kz7iYoFaEcj4fLyZHAmTQA.jpg"
+  },
+  {
+      "original_name": "Law & Order: Special Victims Unit",
+      "genre_ids": [
+          80,
+          18
+      ],
+      "name": "Ley y orden: unidad de víctimas especiales",
+      "popularity": 114.311,
+      "origin_country": [
+          "US"
+      ],
+      "vote_count": 750,
+      "first_air_date": "1999-09-20",
+      "backdrop_path": "/kOvt2BOOwSAQCT8yo3pM3X2GXjh.jpg",
+      "original_language": "en",
+      "id": 2734,
+      "vote_average": 6.5,
+      "overview": "Ley y orden: unidad de víctimas especiales es una serie de televisión estadounidese grabada en Nueva York donde es también principalmente producida. Con el estilo de la original \"Ley y Orden\" los episodios son usualmente \"sacados de los titulares\" o basados libremente en verdaderos asesinatos que han recibido la atención de los medios.",
+      "poster_path": "/5KfFnPRIgxan2eJ7XxMkucpq8VI.jpg"
+  },
+  {
+      "original_name": "The Simpsons",
+      "genre_ids": [
+          16,
+          35
+      ],
+      "name": "Los Simpson",
+      "popularity": 153.344,
+      "origin_country": [
+          "US"
+      ],
+      "vote_count": 2283,
+      "first_air_date": "1989-12-17",
+      "backdrop_path": "/f5uNbUC76oowt5mt5J9QlqrIYQ6.jpg",
+      "original_language": "en",
+      "id": 456,
+      "vote_average": 7.2,
+      "overview": "Comedia americana de animación creada por Matt Groening para la compañía Fox. La serie es una parodia satírica del estilo de la clase media americana encarnada por una familia con ese mismo nombre, compuesta por Homer, Marge, Bart, Lisa, y Maggie Simpson. La trama se desarrolla en la ciudad ficticia de Springfield y parodia la cultura, la sociedad, la televisión estadounidense y muchos otros aspectos de la condición humana.",
+      "poster_path": "/u8BMLmwoc7YPHKSWawOOqC1c8lJ.jpg"
+  },
+  {
+      "original_name": "Doctor Who",
+      "genre_ids": [
+          18,
+          10759,
+          10765
+      ],
+      "name": "Doctor Who",
+      "popularity": 121.148,
+      "origin_country": [
+          "GB"
+      ],
+      "vote_count": 1527,
+      "first_air_date": "2005-03-26",
+      "backdrop_path": "/mQ9yeCuofNatSyErUKAPD1uOq8Q.jpg",
+      "original_language": "en",
+      "id": 57243,
+      "vote_average": 7,
+      "overview": "Doctor Who es una serie de televisión británica de ciencia ficción producida por la BBC. El programa muestra las aventuras de un Señor del Tiempo conocido como \"El Doctor\", que explora el universo en su TARDIS, una nave espacial con conciencia propia capaz de viajar a través del tiempo y el espacio. Con la ayuda de distintos acompañantes, el Doctor se enfrenta a una variedad de enemigos mientras salva civilizaciones, visita tanto el pasado como el futuro, ayuda a gente común y corrige injusticias.",
+      "poster_path": "/3EcYZhBMAvVw4czcDLg9Sd0FuzQ.jpg"
+  },
+  {
+      "original_name": "The Walking Dead",
+      "genre_ids": [
+          18,
+          10759,
+          10765
+      ],
+      "name": "The Walking Dead",
+      "popularity": 96.232,
+      "origin_country": [
+          "US"
+      ],
+      "vote_count": 4422,
+      "first_air_date": "2010-10-31",
+      "backdrop_path": "/wXXaPMgrv96NkH8KD1TMdS2d7iq.jpg",
+      "original_language": "en",
+      "id": 1402,
+      "vote_average": 7.3,
+      "overview": "\"The Walking Dead\" está ambientada en un futuro apocalíptico con la Tierra devastada por el efecto de un cataclismo, que ha provocado la mutación en zombies de la mayor parte de los habitantes del planeta. La serie, explora las dificultades de los protagonistas para sobrevivir en un mundo poblado por el horror, así como las relaciones personales que se establecen entre ellos, en ocasiones también una amenaza para su supervivencia.",
+      "poster_path": "/mdVyjRAB4JWpIr6xaqdwY69JcVq.jpg"
+  },
+  {
+      "original_name": "Riverdale",
+      "genre_ids": [
+          18,
+          9648
+      ],
+      "name": "Riverdale",
+      "popularity": 95.912,
+      "origin_country": [
+          "US"
+      ],
+      "vote_count": 777,
+      "first_air_date": "2017-01-26",
+      "backdrop_path": "/2IUpoKSP64r6rp2vBo0Fdk8a1UU.jpg",
+      "original_language": "en",
+      "id": 69050,
+      "vote_average": 7.3,
+      "overview": "La vida tranquila y convencional de los estudiantes de Riverdale da un giro cuando el alumno más popular del instituto aparece asesinado.\n\n\"Riverdale\" es una serie juvenil con toques de thriller, basada en los míticos personajes de los cómics de '\"Archie\", creados en el año 1968, pero con un giro más oscuro y nada inocente. Los cómics ya tuvieron una adaptación televisiva en dibujos animados, \"Archie y sus amigos\". Los personajes forman parte del imaginario colectivo de una generación y dieron lugar a numerosas entregas basadas en los personajes de Archie, Betty, Reggie, Jughead y Veronica. El estreno de la serie coincide con el 75º aniversario del nacimiento de los cómics.",
+      "poster_path": "/pHcNHYPg0c2vg7qay6wjJoApUgS.jpg"
+  },
+  {
+      "original_name": "Breaking Bad",
+      "genre_ids": [
+          18
+      ],
+      "name": "Breaking Bad",
+      "popularity": 84.848,
+      "origin_country": [
+          "US"
+      ],
+      "vote_count": 3702,
+      "first_air_date": "2008-01-20",
+      "backdrop_path": "/hbgPoI0GBrXJfGjYNV2fMQU0xou.jpg",
+      "original_language": "en",
+      "id": 1396,
+      "vote_average": 8.5,
+      "overview": "Tras cumplir 50 años, Walter White (Bryan Cranston), un profesor de química de un instituto de Albuquerque, Nuevo México, se entera de que tiene un cáncer de pulmón incurable. Casado con Skyler (Anna Gunn) y con un hijo discapacitado (RJ Mitte), la brutal noticia lo impulsa a dar un drástico cambio a su vida: decide, con la ayuda de un antiguo alumno (Aaron Paul), fabricar anfetaminas y ponerlas a la venta. Lo que pretende es liberar a su familia de problemas económicos cuando se produzca el fatal desenlace.",
+      "poster_path": "/1yeVJox3rjo2jBKrrihIMj7uoS9.jpg"
+  },
+  {
+      "original_name": "Friends",
+      "genre_ids": [
+          35,
+          18
+      ],
+      "name": "Friends",
+      "popularity": 78.783,
+      "origin_country": [
+          "US"
+      ],
+      "vote_count": 1886,
+      "first_air_date": "1994-09-22",
+      "backdrop_path": "/efiX8iir6GEBWCD0uCFIi5NAyYA.jpg",
+      "original_language": "en",
+      "id": 1668,
+      "vote_average": 8,
+      "overview": "Las aventuras de seis jóvenes neoyorquinos unidos por una divertida amistad. Entre el amor, el trabajo y la familia, comparten sus alegrías y preocupaciones en el Central Perk, su café favorito.",
+      "poster_path": "/msM7gxuojeavsRSaYocKWCJEdwO.jpg"
+  },
+  {
+      "original_name": "Shameless",
+      "genre_ids": [
+          35,
+          18
+      ],
+      "name": "Shameless (US)",
+      "popularity": 70.031,
+      "origin_country": [
+          "US"
+      ],
+      "vote_count": 939,
+      "first_air_date": "2011-01-09",
+      "backdrop_path": "/1ccgQ6IJyEc8UHPtGeFFeRqMVnc.jpg",
+      "original_language": "en",
+      "id": 34307,
+      "vote_average": 7.9,
+      "overview": "Remake norteamericano de la serie británica sobre la peculiar familia Gallagher, en la que Frank (William H. Macy), un padre soltero y alcohólico, trata de educar a sus seis inteligentes, salvajes e independientes hijos.",
+      "poster_path": "/7eDvhKCu7jkkKQI37nwYWvXJTzl.jpg"
+  },
+  {
+      "original_name": "Family Guy",
+      "genre_ids": [
+          16,
+          35
+      ],
+      "name": "Padre de familia",
+      "popularity": 111.681,
+      "origin_country": [
+          "US"
+      ],
+      "vote_count": 1760,
+      "first_air_date": "1999-01-31",
+      "backdrop_path": "/pH38r4TWTqq7Mcs6XAlwgzNUeJe.jpg",
+      "original_language": "en",
+      "id": 1434,
+      "vote_average": 6.5,
+      "overview": "Padre de familia es una comedia de animación para adultos creada por Seth MacFarlane para la Fox Broadcasting Company. La serie se centra en los Griffin, una mediocre familia compuesta por los padres Peter y Lois; sus hijos Meg, Chris, y Stewie; y su antropomórfica mascota canina Brian. La serie está ambientada en la ciudad ficticia de Quahog, Rhode Island, y gran parte de su humor se exhibe en forma de pequeños cortes que frecuentemente se mofan de la cultura americana.",
+      "poster_path": "/n3UBzIx28m3FpC2EDwVJIjvPxnl.jpg"
+  },
+  {
+      "original_name": "Star Wars: The Clone Wars",
+      "genre_ids": [
+          16,
+          10759,
+          10765
+      ],
+      "name": "Star Wars: Las guerras Clon",
+      "popularity": 90.376,
+      "origin_country": [
+          "SG",
+          "US"
+      ],
+      "vote_count": 233,
+      "first_air_date": "2008-10-03",
+      "backdrop_path": "/gAlEO2hFU29uFv6RcC7efps0iL9.jpg",
+      "original_language": "en",
+      "id": 4194,
+      "vote_average": 7.7,
+      "overview": "La escasa tropa Jedi lucha por mantener la libertad y devolver la paz a la Galaxia frente al aparentemente interminable ejército droide, clones diseñados genéticamente. A través de cientos de planetas, los Caballeros Jedi y los Separatistas combaten por el futuro de la Galaxia, pero el número de planetas que van cayendo en manos del Lado Oscuro cada vez es mayor a causa de los movimientos de los Separatistas. El terrible conflicto se agrava porque nuestros héroes se ven absorbidos por la confusión de guerra, mientras el Conde Dooku, el asesino Asajj Ventress, su maestro Darth Sidious, el General Grievous y una amplia galería de enemigos nunca antes visto también conspiran y se unen para derrotarlos.\n\nLa historias de la serie 'Star Wars: The clone wars' transcurre entre el \"Episodio II: El ataque de los clones' y el \"Episodio III: La venganza de los Sith\" de la saga Star Wars.",
+      "poster_path": "/k2D7iNM612FfCg25VdwiA53tjiO.jpg"
+    }
+  ];
+
+  var selector = 10;
 
   return (
     <div id="recomendaciones">
       <h2>Recomendaciones</h2>
-      <Recomendaciones recomendaciones = {peliculas} />
+      <Selector />
+      <Recomendaciones recomendaciones = {peliculas} selector = {selector} />
+      {/* <Recomendaciones recomendaciones = {series} /> */}
     </div>
   );
   
