@@ -831,9 +831,10 @@ function App() {
 
   return (
     <div id="recomendaciones">
-      <h2>Recomendaciones</h2>      
+      <h3>Películas recomendadas</h3>      
       <Recomendaciones recomendaciones = {peliculas}/>
-      {/* <Recomendaciones recomendaciones = {series} /> */}
+      <h3>Series recomendadas</h3>  
+      <Recomendaciones recomendaciones = {series} />
     </div>
   );
   

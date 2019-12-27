@@ -15,6 +15,16 @@ class Recomendacion extends React.Component{
 
         const urlPoster = "http://image.tmdb.org/t/p/w185//" + this.state.recomendacion.backdrop_path;
 
+        var tituloRecomendacion = "";
+        var titulo = this.state.recomendacion.title;
+        if (titulo) {
+            tituloRecomendacion = titulo;
+        } else {
+            tituloRecomendacion = this.state.recomendacion.name;
+        }
+
+        
+
         return (
             <div id="recomendacion_card" style={{margin:"0.5em"}}>
                 <Flippy
@@ -29,11 +39,11 @@ class Recomendacion extends React.Component{
                     <FrontSide
                         style={{backgroundColor: '#fff',}}>
 
-                        <img className="poster" src={urlPoster} alt="texto" title={this.state.recomendacion.title}/>
+                        <img className="poster" src={urlPoster} alt="texto" title={tituloRecomendacion}/>
                         {/* <span>{this.state.recomendacion.id}</span> */}
 
                         <p className="tituloRecomendacion">
-                            {this.state.recomendacion.title}
+                            {tituloRecomendacion}
                         </p>
 
                         <hr></hr>
