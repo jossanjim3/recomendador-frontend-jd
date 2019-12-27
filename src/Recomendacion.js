@@ -15,6 +15,7 @@ class Recomendacion extends React.Component{
 
         const urlPoster = "http://image.tmdb.org/t/p/w185//" + this.state.recomendacion.backdrop_path;
 
+        // las peliculas obttienen el nombre de un elemento diferente al de la series
         var tituloRecomendacion = "";
         var titulo = this.state.recomendacion.title;
         if (titulo) {
@@ -23,7 +24,14 @@ class Recomendacion extends React.Component{
             tituloRecomendacion = this.state.recomendacion.name;
         }
 
-        
+        let fechaPubli;
+        // las series no tienen fecha de publicacion
+        if (this.state.recomendacion.release_date) {
+            fechaPubli =  <tr>
+                            <td>Fecha:</td>
+                            <td className="datos_recomendacion_celda">{this.state.recomendacion.release_date}</td>
+                          </tr>;                
+        }
 
         return (
             <div id="recomendacion_card" style={{margin:"0.5em"}}>
@@ -56,10 +64,9 @@ class Recomendacion extends React.Component{
                                 <td>Votos:</td>
                                 <td className="datos_recomendacion_celda">{this.state.recomendacion.vote_count}</td>
                             </tr>
-                            <tr>
-                                <td>Fecha:</td>
-                                <td className="datos_recomendacion_celda">{this.state.recomendacion.release_date}</td>
-                            </tr>
+                            
+                            {fechaPubli}
+                            
                             <tr>
                                 <td>Género:</td>
                                 <td className="datos_recomendacion_celda">{this.state.recomendacion.genre_ids}</td>
