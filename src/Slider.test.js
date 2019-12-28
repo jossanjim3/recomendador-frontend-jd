@@ -430,11 +430,14 @@ it ("renders Slider with data and title", () => {
         }
       ];
     act(() => {
-        render(<Slider recomendacionesSlide = {peliculas} titulo = {titulo} />, container);
+        render(<Slider recomendacionesSlide = {peliculas} titulo = {titulo}/>, container);
     });
 
     expect(container.hasChildNodes()).toBe(true);
     expect(container.textContent).toEqual(expect.stringContaining(titulo));
     expect(container).toEqual(expect.anything());
+    //expect(container.querySelector('div').classList.contains('slider')).toBe(true);
+    //expect(container.classList.contains('slider')).toBe(true);
+    //expect(container.findAll(recomendacionesSlide).length).toBe(peliculas.length);
 
 })

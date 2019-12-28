@@ -21,7 +21,7 @@ class Slider extends React.Component{
 
     render(){
         return (
-            <div id="slider">
+            <div id="slider" className="slider">
                 
                 <table>
                     <tbody>
