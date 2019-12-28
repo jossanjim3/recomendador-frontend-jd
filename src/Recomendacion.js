@@ -64,7 +64,7 @@ class Recomendacion extends React.Component{
                     <FrontSide
                         style={{backgroundColor: '#fff',}}>
                         
-                        <button type="button" name="boton_lista_negra" value={this.state.recomendacion.id} class="btn btn-danger boton_lista_negra" title="Añadir a la lista de No Recomendaciones" onClick={this.clickAdd}>X</button>
+                        <button type="button" name="boton_lista_negra" value={this.state.recomendacion.id} className="btn btn-danger boton_lista_negra" title="Añadir a la lista de No Recomendaciones" onClick={this.clickAdd}>X</button>
 
                         <img className="poster" src={urlPoster} alt="texto" title={tituloRecomendacion}/>
                         {/* <span>{this.state.recomendacion.id}</span> */}
@@ -75,28 +75,30 @@ class Recomendacion extends React.Component{
 
                         <hr></hr>
                         <table>
-                            <tr>
-                                <td>Puntuación:</td>
-                                <td className="datos_recomendacion_celda"><strong>{this.state.recomendacion.vote_average}</strong></td>
-                            </tr>
-                            <tr>
-                                <td>Votos:</td>
-                                <td className="datos_recomendacion_celda">{this.state.recomendacion.vote_count}</td>
-                            </tr>
-                            
-                            {fechaPubli}
+                            <tbody>
+                                <tr>
+                                    <td>Puntuación:</td>
+                                    <td className="datos_recomendacion_celda"><strong>{this.state.recomendacion.vote_average}</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Votos:</td>
+                                    <td className="datos_recomendacion_celda">{this.state.recomendacion.vote_count}</td>
+                                </tr>
+                                
+                                {fechaPubli}
 
-                            <tr>
-                                <td>Género:</td>
-                                <td className="datos_recomendacion_celda">{this.state.recomendacion.genre_ids}</td>
-                            </tr>
+                                <tr>
+                                    <td>Género:</td>
+                                    <td className="datos_recomendacion_celda">{this.state.recomendacion.genre_ids}</td>
+                                </tr>
+                            </tbody>
                         </table>                        
                     </FrontSide>
 
                     <BackSide
                         style={{ backgroundColor: '#fff'}}>
 
-                        <textarea disabled className="overview">{overviewRecomendacion}</textarea>
+                        <textarea disabled className="overview" defaultValue={overviewRecomendacion}></textarea>
 
                     </BackSide>
                 </Flippy>

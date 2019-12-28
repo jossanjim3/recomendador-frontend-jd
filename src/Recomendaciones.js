@@ -27,11 +27,11 @@ class Recomendaciones extends React.Component{
         this.setState({ isLoading: true });
 
         Promise.all([
-            //fetch('https://api.themoviedb.org/3/movie/popular?api_key=18268e82edbd92497a6d18853ddf8c57&language=es-ES'),
-            //fetch('https://api.themoviedb.org/3/tv/popular?api_key=18268e82edbd92497a6d18853ddf8c57&language=es-ES')
+            fetch('https://api.themoviedb.org/3/movie/popular?api_key=18268e82edbd92497a6d18853ddf8c57&language=es-ES'),
+            fetch('https://api.themoviedb.org/3/tv/popular?api_key=18268e82edbd92497a6d18853ddf8c57&language=es-ES')
 
-            fetch('http://localhost:3000/recomendador/aleatorio/peliculas'),
-            fetch('http://localhost:3000/recomendador/aleatorio/series')
+            //fetch('http://localhost:3000/recomendador/aleatorio/peliculas'),
+            //fetch('http://localhost:3000/recomendador/aleatorio/series')
         ])
         .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
         .then(([data1, data2]) => this.setState({

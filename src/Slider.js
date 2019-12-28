@@ -24,23 +24,25 @@ class Slider extends React.Component{
             <div id="slider">
                 
                 <table>
-                    <tr>
-                        <td>
-                            <select className="browser-default custom-select" onChange={this._handleChange} style={{width: "4em", marginLeft:"1em"}}
-                                    placeholder="Select number of..."  ref={ref => {
-                                                                        this._select = ref
-                                                                        }}
-                                    defaultValue={this.state.value}>
-                                <option value="5">5</option>
-                                <option value="10">10</option>
-                                <option value="15">15</option>
-                                <option value="20">20</option>
-                            </select>
-                        </td>
-                        <td className="tituloSlider">
-                            {this.state.titulo}
-                        </td>
-                    </tr>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <select className="browser-default custom-select" onChange={this._handleChange} style={{width: "4em", marginLeft:"1em"}}
+                                        placeholder="Select number of..."  ref={ref => {
+                                                                            this._select = ref
+                                                                            }}
+                                        defaultValue={this.state.value}>
+                                    <option value="5">5</option>
+                                    <option value="10">10</option>
+                                    <option value="15">15</option>
+                                    <option value="20">20</option>
+                                </select>
+                            </td>
+                            <td className="tituloSlider">
+                                {this.state.titulo}
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>                                                   
 
                 <Whirligig visibleSlides={this.state.recomendacionesSlide.length / 4} gutter="1em">
