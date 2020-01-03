@@ -19,9 +19,6 @@ class ListaNegraRecomendaciones extends React.Component{
         this.setState({ isLoading: true });
 
         Promise.all([
-            //fetch('https://api.themoviedb.org/3/movie/popular?api_key=18268e82edbd92497a6d18853ddf8c57&language=es-ES'),
-            //fetch('https://api.themoviedb.org/3/tv/popular?api_key=18268e82edbd92497a6d18853ddf8c57&language=es-ES')
-
             fetch('http://localhost:3000/recomendador/listaNegra/peliculas'),
             fetch('http://localhost:3000/recomendador/listaNegra/series')
         ])
@@ -63,7 +60,7 @@ class ListaNegraRecomendaciones extends React.Component{
     }
 
     deletePeliculaListaNegra(idPelicula){
-        const urlAPI = "http://localhost:3000/recomendador/listaNegra/pelicula/" + idPelicula;
+        const urlAPI = "http://localhost:3000/recomendador/v1/listaNegra/pelicula/" + idPelicula;
         var data = {username: 'example'};
         //window.alert(urlAPI);
         
