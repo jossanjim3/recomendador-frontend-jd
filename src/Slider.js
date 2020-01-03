@@ -57,6 +57,7 @@ class Slider extends React.Component{
           .catch(error => window.alert('Error:', error))
           .then(response => {
               //window.alert('Success:', response)
+              this.removeRecomendacionFromArray(idPelicula);
               window.alert("Pelicula añadida a la lista no recomendada!");
           });      
 
@@ -77,10 +78,22 @@ class Slider extends React.Component{
           .catch(error => window.alert('Error:', error))
           .then(response => {
               //window.alert('Success:', response)
+              this.removeRecomendacionFromArray(idSerie);
               window.alert("Serie añadida a la lista no recomendada!");
           }); 
     }
     
+
+    removeRecomendacionFromArray(id){
+        const newState = this.state;
+        const index = newState.recomendacionesSlide.findIndex(a => a.id === id);
+
+        if (index === -1) return;
+        newState.recomendacionesSlide.splice(index, 1);
+
+        this.setState(newState); // This will update the state and trigger a rerender of the components
+  
+    }
 
     render(){
         return (
