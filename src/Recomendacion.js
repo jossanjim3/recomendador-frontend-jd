@@ -7,14 +7,15 @@ class Recomendacion extends React.Component{
         super(props);
         this.state = {
             errorInfo : null,
-            recomendacion: this.props.recomendacion,
+            recomendacion: this.props.recomendacion, // atributos de la pelicula o serie
+            tipo : this.props.tipo // tipo 1 => pelicula, tipo 2 => serie
         };
     }
 
-    clickAdd(event){
-        var id_recomendacion = event.target.value;
-        window.alert("id recurso: " + id_recomendacion);
-
+    clickAdd(idRecomendacion, tipo){
+        var id_recomendacion = idRecomendacion;
+        var tipoRec = tipo;
+        window.alert("id recurso: " + id_recomendacion + ", tipo: " + tipo);
         // TODO: insetar id recomendacion en lista negra y eliminar elemento del array
         // OPCIONAL: crear una vista donde aparezcan todas las peliculas o series de la lista negra
     }
@@ -64,7 +65,7 @@ class Recomendacion extends React.Component{
                     <FrontSide
                         style={{backgroundColor: '#fff',}}>
                         
-                        <button type="button" name="boton_lista_negra" value={this.state.recomendacion.id} className="btn btn-danger boton_lista_negra" title="Añadir a la lista de No Recomendaciones" onClick={this.clickAdd}>X</button>
+                        <button type="button" name="boton_lista_negra" value={this.state.recomendacion.id} className="btn btn-danger boton_lista_negra" title="Añadir a la lista de No Recomendaciones" onClick={this.clickAdd.bind(this,this.state.recomendacion.id,this.state.tipo)}>X</button>
 
                         <img className="poster" src={urlPoster} alt="texto" title={tituloRecomendacion}/>
                         {/* <span>{this.state.recomendacion.id}</span> */}

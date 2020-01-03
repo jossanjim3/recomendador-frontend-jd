@@ -874,8 +874,8 @@ class Recomendaciones extends React.Component{
 
         return (
                 <div id="recomendacion_slides">                 
-                <Slider recomendacionesSlide = {this.state.peliculas} titulo = "Películas"></Slider>
-                <Slider recomendacionesSlide = {this.state.series} titulo = "Series"></Slider>
+                <Slider recomendacionesSlide = {this.state.peliculas} titulo = "Películas" tipo = "1"></Slider>
+                <Slider recomendacionesSlide = {this.state.series} titulo = "Series" tipo = "2"></Slider>
             </div>
         );
        
