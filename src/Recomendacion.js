@@ -43,6 +43,69 @@ class Recomendacion extends React.Component{
                           </tr>;                
         }
 
+        var generos = "";
+        var generosTrimmed = "";
+        if(this.state.recomendacion.genre_ids != null){
+            this.state.recomendacion.genre_ids.map((genero) => {
+                if(genero === 28){
+                    generos = generos + "Acción" + ", ";
+                } else if(genero === 12){
+                    generos = generos + "Aventura" + ", ";
+                } else if(genero === 16){
+                    generos = generos + "Animación" + ", ";
+                } else if(genero === 35){
+                    generos = generos + "Comedia" + ", ";
+                } else if(genero === 80){
+                    generos = generos + "Crimen" + ", ";
+                } else if(genero === 99){
+                    generos = generos + "Documental" + ", ";
+                } else if(genero === 18){
+                    generos = generos + "Drama" + ", ";
+                } else if(genero === 10751){
+                    generos = generos + "Familia" + ", ";
+                } else if(genero === 14){
+                    generos = generos + "Fantasía" + ", ";
+                } else if(genero === 36){
+                    generos = generos + "Historia" + ", ";
+                } else if(genero === 27){
+                    generos = generos + "Terror" + ", ";
+                } else if(genero === 10402){
+                    generos = generos + "Música" + ", ";
+                } else if(genero === 9648){
+                    generos = generos + "Misterio" + ", ";
+                } else if(genero === 10749){
+                    generos = generos + "Romance" + ", ";
+                } else if(genero === 878){
+                    generos = generos + "Ciencia Ficción" + ", ";
+                } else if(genero === 10770){
+                    generos = generos + "Película de TV" + ", ";
+                } else if(genero === 53){
+                    generos = generos + "Suspense" + ", ";
+                } else if(genero === 10752){
+                    generos = generos + "Bélica" + ", ";
+                } else if(genero === 37){
+                    generos = generos + "Western" + ", ";
+                } else if(genero === 10759){
+                    generos = generos + "Batalla" + ", ";
+                } else if(genero === 10765){
+                    generos = generos + "Magia" + ", ";
+                } else {
+                    generos = generos + "Otros" + ", ";
+                }
+                
+            })
+
+            //eliminar la ultima ,
+            generos = generos.substring(0,generos.length - 2);
+
+            if (generos.length > 20) {
+                generosTrimmed = generos.substring(0,15);
+                generosTrimmed = generosTrimmed + "...";
+            } else {
+                generosTrimmed = generos;
+            }
+        }
+
         return (
             <div id="recomendacion_card" style={{margin:"0.5em"}}>
                 <Flippy
@@ -62,7 +125,7 @@ class Recomendacion extends React.Component{
                         <img className="poster" src={urlPoster} alt="texto" title={tituloRecomendacion}/>
                         {/* <span>{this.state.recomendacion.id}</span> */}
 
-                        <p className="tituloRecomendacion">
+                        <p className="tituloRecomendacion" title={tituloRecomendacion}>
                             {tituloRecomendacion}
                         </p>                        
 
@@ -82,7 +145,7 @@ class Recomendacion extends React.Component{
 
                                 <tr>
                                     <td>Género:</td>
-                                    <td className="datos_recomendacion_celda">{this.state.recomendacion.genre_ids}</td>
+                                    <td className="datos_recomendacion_celda generos" title={generos}>{generosTrimmed}</td>
                                 </tr>
                             </tbody>
                         </table>                        

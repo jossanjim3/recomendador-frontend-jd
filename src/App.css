@@ -44,6 +44,12 @@
   font-weight: bold;
 }
 
+.generos {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
 .tooltip {
   position: relative;
   display: inline-block;
