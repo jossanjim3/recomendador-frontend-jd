@@ -14,7 +14,6 @@ function App() {
       <h1>Recomendaciones</h1>
       <Recomendaciones />
       <hr></hr>
-      <h1>Lista Negra Recomendaciones</h1>
       <ListaNegraRecomendaciones />
     </div>
   );

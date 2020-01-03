@@ -48,8 +48,6 @@ class Slider extends React.Component{
             // error
             window.alert("Lo sentimos! Se ha producido un error inesperado. No se puede añadir a la lista de no recomendaciones. Inténtelo de nuevo más tarde.");
         }
-
-        // OPCIONAL: crear una vista donde aparezcan todas las peliculas o series de la lista negra
     }
 
     addPeliculaListaNegra(idPelicula){

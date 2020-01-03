@@ -11,6 +11,8 @@ class ListaNegraRecomendaciones extends React.Component{
             seriesNR : [],
             isLoading: false,
         };
+
+        this.handleDeleteListaNegra = this.handleDeleteListaNegra.bind(this);
     }    
     
     componentDidMount(){
@@ -31,6 +33,88 @@ class ListaNegraRecomendaciones extends React.Component{
         }));
     }
 
+    handleDeleteListaNegra(idElemento, tipo){
+        var idElemento = idElemento;
+        var tipoRec = tipo;
+        //window.alert("id recurso: " + id_recomendacion + ", tipo: " + tipo);        
+
+        if (tipoRec == 1){
+            // pelicula
+            if (window.confirm('¿Estás seguro que desea eliminar la película de la lista de no recomendadas?')) {
+                // Save it!
+                this.deletePeliculaListaNegra(idElemento);
+            } else {
+                // Do nothing!
+            }
+            
+        } else if (tipoRec == 2){
+            // serie
+            if (window.confirm('¿Estás seguro que desea eliminar la serie de la lista de no recomendadas?')) {
+                // Save it!
+                this.deleteSerieListaNegra(idElemento);
+            } else {
+                // Do nothing!
+            }
+                        
+        } else {
+            // error
+            window.alert("Lo sentimos! Se ha producido un error inesperado. No se puede eliminar de la lista de no recomendadas. Inténtelo de nuevo más tarde.");
+        }
+    }
+
+    deletePeliculaListaNegra(idPelicula){
+        const urlAPI = "http://localhost:3000/recomendador/listaNegra/pelicula/" + idPelicula;
+        var data = {username: 'example'};
+        //window.alert(urlAPI);
+        
+        fetch(urlAPI, {
+            method: 'DELETE', // or 'PUT'
+            body: JSON.stringify(data), // data can be `string` or {object}!
+            headers:{
+              'Content-Type': 'application/json'
+            }
+          }).then(res => res.json())          
+          .then(response => {
+                //window.alert('Success:', response)
+                const newState = this.state;
+                const index = newState.peliculasNR.findIndex(a => a.idTmdb === idPelicula);
+
+                if (index === -1) return;
+                newState.peliculasNR.splice(index, 1);
+
+                this.setState(newState); // This will update the state and trigger a rerender of the components
+                window.alert("Pelicula eliminada de la lista no recomendadas!");
+          })
+          .catch(error => window.alert('Error:', error));      
+
+    }
+
+    deleteSerieListaNegra(idSerie){
+        const urlAPI = "http://localhost:3000/recomendador/listaNegra/serie/" + idSerie;
+        var data = {username: 'example'};
+        //window.alert(urlAPI);
+        
+        fetch(urlAPI, {
+            method: 'DELETE', // or 'PUT'
+            body: JSON.stringify(data), // data can be `string` or {object}!
+            headers:{
+              'Content-Type': 'application/json'
+            }
+          }).then(res => res.json())
+          .catch(error => window.alert('Error:', error))
+          .then(response => {
+              //window.alert('Success:', response)
+              const newState = this.state;
+              const index = newState.seriesNR.findIndex(a => a.idTmdb === idSerie);
+
+              if (index === -1) return;
+              newState.seriesNR.splice(index, 1);
+
+              this.setState(newState); // This will update the state and trigger a rerender of the components
+              window.alert("Serie eliminada de la lista no recomendadas!");
+          }); 
+    }
+
     render(){
                  
         if (this.state.isLoading) {
@@ -44,7 +128,7 @@ class ListaNegraRecomendaciones extends React.Component{
 
         return (
                 <div id="lista_negra_table">                 
-
+                    <h3>Lista de películas no recomendadas:</h3>
                     <table className="table">
                         <thead>
                             <tr>
@@ -56,14 +140,15 @@ class ListaNegraRecomendaciones extends React.Component{
                         </thead>
 
                         {this.state.peliculasNR.map((peli) => 
-                                <ListaNegra key = {peli.idTmdb} elemento = {peli} tipo = "1"/>
+                                <ListaNegra key = {peli.idTmdb} elemento = {peli} tipo = "1" deleteFromListaNegra={this.handleDeleteListaNegra}/>
                             )
                         }
 
                     </table>
 
                     <hr></hr>
-
+                    
+                    <h3>Lista de series no recomendadas:</h3>
                     <table className="table">
                         <thead>
                             <tr>
@@ -75,7 +160,7 @@ class ListaNegraRecomendaciones extends React.Component{
                         </thead>
 
                         {this.state.seriesNR.map((serie) => 
-                                <ListaNegra key = {serie.idTmdb} elemento = {serie} tipo = "2"/>
+                                <ListaNegra key = {serie.idTmdb} elemento = {serie} tipo = "2" deleteFromListaNegra={this.handleDeleteListaNegra}/>
                             )
                         }
 
