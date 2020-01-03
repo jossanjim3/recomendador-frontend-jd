@@ -14,11 +14,73 @@ class Slider extends React.Component{
             slideIndex : 1, // indice del slice, comienza por el primer elemento
             tipo : this.props.tipo // tipo 1 => pelicula, tipo 2 => serie
         };
+        this.handleListaNegra = this.handleListaNegra.bind(this);
     }
 
     _handleChange = (event) => {
         this.setState({ value: event.target.value })
       }
+    
+    handleListaNegra(idRecomendacion, tipo){
+        var id_recomendacion = idRecomendacion;
+        var tipoRec = tipo;
+        //window.alert("id recurso: " + id_recomendacion + ", tipo: " + tipo);
+
+        if (tipoRec == 1){
+            // pelicula
+            this.addPeliculaListaNegra(id_recomendacion);
+
+        } else if (tipoRec == 2){
+            // serie
+            this.addSerieListaNegra(id_recomendacion);
+
+        } else {
+            // error
+            window.alert("Lo sentimos! Se ha producido un error inesperado. No se puede añadir a la lista de no recomendaciones. Inténtelo de nuevo más tarde.");
+        }
+
+        // OPCIONAL: crear una vista donde aparezcan todas las peliculas o series de la lista negra
+    }
+
+    addPeliculaListaNegra(idPelicula){
+        const urlAPI = "http://localhost:3000/recomendador/listaNegra/pelicula/" + idPelicula;
+        var data = {username: 'example'};
+        //window.alert(urlAPI);
+        
+        fetch(urlAPI, {
+            method: 'POST', // or 'PUT'
+            body: JSON.stringify(data), // data can be `string` or {object}!
+            headers:{
+              'Content-Type': 'application/json'
+            }
+          }).then(res => res.json())
+          .catch(error => window.alert('Error:', error))
+          .then(response => {
+              //window.alert('Success:', response)
+              window.alert("Pelicula añadida a la lista no recomendada!");
+          });      
+
+    }
+
+    addSerieListaNegra(idSerie){
+        const urlAPI = "http://localhost:3000/recomendador/listaNegra/serie/" + idSerie;
+        var data = {username: 'example'};
+        //window.alert(urlAPI);
+        
+        fetch(urlAPI, {
+            method: 'POST', // or 'PUT'
+            body: JSON.stringify(data), // data can be `string` or {object}!
+            headers:{
+              'Content-Type': 'application/json'
+            }
+          }).then(res => res.json())
+          .catch(error => window.alert('Error:', error))
+          .then(response => {
+              //window.alert('Success:', response)
+              window.alert("Serie añadida a la lista no recomendada!");
+          }); 
+    }
+    
 
     render(){
         return (
@@ -46,9 +108,9 @@ class Slider extends React.Component{
                     </tbody>
                 </table>                                                   
 
-                <Whirligig visibleSlides={this.state.recomendacionesSlide.length / 4} gutter="1em">
+                <Whirligig id="sliderComponent" visibleSlides={this.state.recomendacionesSlide.length / 4} gutter="1em">
                     {this.state.recomendacionesSlide.slice(0,this.state.value).map((recomendacion) => 
-                        <Recomendacion key = {recomendacion.id} recomendacion = {recomendacion} tipo = {this.state.tipo}/>
+                        <Recomendacion key = {recomendacion.id} recomendacion = {recomendacion} tipo = {this.state.tipo} clickAddListaNegra={this.handleListaNegra}/>
                     )
                 } 
                 </Whirligig>

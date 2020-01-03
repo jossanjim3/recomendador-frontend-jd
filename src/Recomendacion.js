@@ -8,68 +8,8 @@ class Recomendacion extends React.Component{
         this.state = {
             errorInfo : null,
             recomendacion: this.props.recomendacion, // atributos de la pelicula o serie
-            tipo : this.props.tipo // tipo 1 => pelicula, tipo 2 => serie,
+            tipo : this.props.tipo, // tipo 1 => pelicula, tipo 2 => serie,
         };
-    }
-
-    clickAdd(idRecomendacion, tipo){
-        var id_recomendacion = idRecomendacion;
-        var tipoRec = tipo;
-        //window.alert("id recurso: " + id_recomendacion + ", tipo: " + tipo);
-
-        if (tipoRec == 1){
-            // pelicula
-            this.addPeliculaListaNegra(id_recomendacion);
-
-        } else if (tipoRec == 2){
-            // serie
-            this.addSerieListaNegra(id_recomendacion);
-
-        } else {
-            // error
-            window.alert("Lo sentimos! Se ha producido un error inesperado. No se puede añadir a la lista de no recomendaciones. Inténtelo de nuevo más tarde.");
-        }
-
-        // OPCIONAL: crear una vista donde aparezcan todas las peliculas o series de la lista negra
-    }
-
-    addPeliculaListaNegra(idPelicula){
-        const urlAPI = "http://localhost:3000/recomendador/listaNegra/pelicula/" + idPelicula;
-        var data = {username: 'example'};
-        //window.alert(urlAPI);
-        
-        fetch(urlAPI, {
-            method: 'POST', // or 'PUT'
-            body: JSON.stringify(data), // data can be `string` or {object}!
-            headers:{
-              'Content-Type': 'application/json'
-            }
-          }).then(res => res.json())
-          .catch(error => window.alert('Error:', error))
-          .then(response => {
-              //window.alert('Success:', response)
-              window.alert("Pelicula añadida a la lista no recomendada!");
-          });      
-
-    }
-
-    addSerieListaNegra(idSerie){
-        const urlAPI = "http://localhost:3000/recomendador/listaNegra/serie/" + idSerie;
-        var data = {username: 'example'};
-        //window.alert(urlAPI);
-        
-        fetch(urlAPI, {
-            method: 'POST', // or 'PUT'
-            body: JSON.stringify(data), // data can be `string` or {object}!
-            headers:{
-              'Content-Type': 'application/json'
-            }
-          }).then(res => res.json())
-          .catch(error => window.alert('Error:', error))
-          .then(response => {
-              //window.alert('Success:', response)
-              window.alert("Serie añadida a la lista no recomendada!");
-          }); 
     }
 
     render(){
@@ -117,7 +57,7 @@ class Recomendacion extends React.Component{
                     <FrontSide
                         style={{backgroundColor: '#fff',}}>
                         
-                        <button type="button" name="boton_lista_negra" value={this.state.recomendacion.id} className="btn btn-danger boton_lista_negra" title="Añadir a la lista de No Recomendaciones" onClick={this.clickAdd.bind(this,this.state.recomendacion.id,this.state.tipo)}>X</button>
+                        <button type="button" name="boton_lista_negra" value={this.state.recomendacion.id} className="btn btn-danger boton_lista_negra" title="Añadir a la lista de No Recomendaciones" onClick={() => this.props.clickAddListaNegra(this.state.recomendacion.id,this.state.tipo)}>X</button>
 
                         <img className="poster" src={urlPoster} alt="texto" title={tituloRecomendacion}/>
                         {/* <span>{this.state.recomendacion.id}</span> */}
