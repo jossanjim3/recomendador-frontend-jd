@@ -6,8 +6,8 @@ import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // setup fake backend
-import { configureFakeBackend } from './_helpers/fake-backend';
-configureFakeBackend();
+// import { configureFakeBackend } from './_helpers/fake-backend';
+// configureFakeBackend();
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
