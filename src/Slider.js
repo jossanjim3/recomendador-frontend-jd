@@ -121,7 +121,7 @@ class Slider extends React.Component{
                     </tbody>
                 </table>                                                   
 
-                <Whirligig id="sliderComponent" visibleSlides={this.state.recomendacionesSlide.length / 4} gutter="1em">
+                <Whirligig id="sliderComponent" visibleSlides={5} gutter="1em">
                     {this.state.recomendacionesSlide.slice(0,this.state.value).map((recomendacion) => 
                         <Recomendacion key = {recomendacion.id} recomendacion = {recomendacion} tipo = {this.state.tipo} clickAddListaNegra={this.handleListaNegra}/>
                     )
