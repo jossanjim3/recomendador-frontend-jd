@@ -5,7 +5,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import { PrivateRoute } from './PrivateRoute';
 import Home from './pages/Home';
-import Admin from './pages/Admin';
 import Signin from './authentication/Signin';
 import Signup from './authentication/Signup';
 import Myaccount from './authentication/Myaccount';
@@ -40,18 +39,17 @@ class App extends React.Component {
                 <div>
                     <nav className="navbar navbar-expand navbar-dark bg-dark">
                         <div className="navbar-nav">
-                            <Link to="/" className="nav-item nav-link">Home</Link>
+                            <Link to="/" className="nav-item nav-link">Inicio</Link>
                             {
                                 currentToken ? 
                                     <div className="navbar-nav">
-                                        <Link to="/admin" className="nav-item nav-link">Admin</Link>
-                                        <Link to="/myaccount" className="nav-item nav-link">My Account</Link>
-                                        <a onClick={this.logout} className="nav-item nav-link">Logout</a>
+                                        <Link to="/myaccount" className="nav-item nav-link">Mi cuenta</Link>
+                                        <a onClick={this.logout} className="nav-item nav-link">Cierre de sesión</a>
                                     </div>
                                     : 
                                     <div className="navbar-nav">
-                                        <Link to="/signin" className="nav-item nav-link">Sign In</Link>
-                                        <Link to="/signup" className="nav-item nav-link">Sign Up</Link>
+                                        <Link to="/signin" className="nav-item nav-link">Ingresar</Link>
+                                        <Link to="/signup" className="nav-item nav-link">Inscribirse</Link>
                                     </div>
                             }
                         </div>
@@ -63,7 +61,6 @@ class App extends React.Component {
                                     <Route exact path="/" component={Home} />
                                     <Route exact path="/signin" component={Signin} />
                                     <Route exact path="/signup" component={Signup} />
-                                    <PrivateRoute exact path="/admin" component={Admin} />
                                     <PrivateRoute exact path="/myaccount" component={Myaccount} />
                                 </div>
                             </div>

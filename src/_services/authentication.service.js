@@ -21,7 +21,7 @@ function login(login, password) {
         body: JSON.stringify({ login, password })
     };
 
-    return fetch(`https://fis-backend-login.herokuapp.com/api/v1/authenticate`, requestOptions)
+    return fetch(`https://fis-api-gateway.herokuapp.com/api/v1/authenticate`, requestOptions)
         .then(handleResponse)
         .then(token => {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
@@ -39,7 +39,7 @@ function signup(login, password, email) {
         body: JSON.stringify({ login, password, email })
     };
 
-    return fetch(`https://fis-backend-login.herokuapp.com/api/v1/user`, requestOptions)
+    return fetch(`https://fis-api-gateway.herokuapp.com/api/v1/user`, requestOptions)
         .then(handleResponse);
 }
 
@@ -50,7 +50,7 @@ function edit(newPassword, newEmail) {
         body: JSON.stringify({ newPassword, newEmail })
     };
 
-    return fetch(`https://fis-backend-login.herokuapp.com/api/v1/user`, requestOptions)
+    return fetch(`https://fis-api-gateway.herokuapp.com/api/v1/user`, requestOptions)
         .then(handleResponse);
 }
 

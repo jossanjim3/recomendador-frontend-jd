@@ -63,13 +63,13 @@ class Myaccount extends React.Component {
         const { user, editEmail, editPassword } = this.state;
         return (
             <div>
-                <h2>My Account</h2>
+                <h2>Mi cuenta</h2>
                 {user &&
                     <table className="table table-borderless">
                         <tbody>
                             <tr>
                                 <th>
-                                    Username
+                                    Nombre de usuario
                                 </th>
                                 <td>
                                     {user.login}
@@ -77,10 +77,10 @@ class Myaccount extends React.Component {
                             </tr>
                             <tr>
                                 <th>
-                                    Email
+                                    Correo electrónico
                                 </th>
                                 <td>
-                                    {user.email} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <button type="button" className="btn btn-primary" onClick={editEmail ? this.handleCancelEditEmail : this.handleEditEmail}>{editEmail ? "Cancel" : "Change email"}</button>
+                                    {user.email} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <button type="button" className="btn btn-primary" onClick={editEmail ? this.handleCancelEditEmail : this.handleEditEmail}>{editEmail ? "Cancelar" : "Cambiar el correo electrónico"}</button>
                                 </td>
                             </tr>
                             <tr>
@@ -93,8 +93,8 @@ class Myaccount extends React.Component {
                                             }}
                                             validationSchema={Yup.object().shape({
                                                 email: Yup.string()
-                                                    .email('Invalid email')
-                                                    .required('Email is required')
+                                                    .email('Correo electrónico no válido')
+                                                    .required('Se requiere un correo electrónico')
                                             })}
                                             onSubmit={({ email, password }, { setStatus, setSubmitting }) => {
                                                 setStatus();
@@ -103,7 +103,7 @@ class Myaccount extends React.Component {
                                                         () => {
                                                             this.updateUser();
                                                             this.handleCancelEditEmail();
-                                                            this.successEdit("Email successfully modified");
+                                                            this.successEdit("El correo electrónico se modificó con éxito");
                                                         },
                                                         error => {
                                                             setSubmitting(false);
@@ -114,12 +114,12 @@ class Myaccount extends React.Component {
                                             render={({ errors, status, touched, isSubmitting }) => (
                                                 <Form>
                                                     <div className="form-group">
-                                                        <label htmlFor="email">New email</label>
+                                                        <label htmlFor="email">Nuevo correo electrónico</label>
                                                         <Field name="email" type="email" className={'form-control' + (errors.email && touched.email ? ' is-invalid' : '')} />
                                                         <ErrorMessage name="email" component="div" className="invalid-feedback" />
                                                     </div>
                                                     <div className="form-group">
-                                                        <button type="submit" className="btn btn-primary" disabled={isSubmitting}>Submit</button>
+                                                        <button type="submit" className="btn btn-primary" disabled={isSubmitting}>Enviar</button>
                                                         {isSubmitting &&
                                                             <img src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
                                                         }
@@ -135,10 +135,10 @@ class Myaccount extends React.Component {
                             </tr>
                             <tr>
                                 <th>
-                                    Password
+                                    Contraseña
                                 </th>
                                 <td>
-                                    <button type="button" className="btn btn-primary" onClick={editPassword ? this.handleCancelEditPassword : this.handleEditPassword}>{editPassword ? "Cancel" : "Change password"}</button>
+                                    <button type="button" className="btn btn-primary" onClick={editPassword ? this.handleCancelEditPassword : this.handleEditPassword}>{editPassword ? "Cancelar" : "Cambiar la contraseña"}</button>
                                 </td>
                             </tr>
                             <tr>
@@ -151,7 +151,7 @@ class Myaccount extends React.Component {
                                             }}
                                             validationSchema={Yup.object().shape({
                                                 password: Yup.string()
-                                                    .required('Password is required')
+                                                    .required('Se requiere una contraseña')
                                             })}
                                             onSubmit={({ email, password }, { setStatus, setSubmitting }) => {
                                                 setStatus();
@@ -159,7 +159,7 @@ class Myaccount extends React.Component {
                                                     .then(
                                                         () => {
                                                             this.handleCancelEditPassword();
-                                                            this.successEdit("Password successfully modified");
+                                                            this.successEdit("Contraseña modificada con éxito");
                                                         },
                                                         error => {
                                                             setSubmitting(false);
@@ -170,12 +170,12 @@ class Myaccount extends React.Component {
                                             render={({ errors, status, touched, isSubmitting }) => (
                                                 <Form>
                                                     <div className="form-group">
-                                                    <label htmlFor="password">New password</label>
+                                                    <label htmlFor="password">Nueva contraseña</label>
                                                     <Field name="password" type="password" className={'form-control' + (errors.password && touched.password ? ' is-invalid' : '')} />
                                                     <ErrorMessage name="password" component="div" className="invalid-feedback" />
                                                     </div>
                                                     <div className="form-group">
-                                                        <button type="submit" className="btn btn-primary" disabled={isSubmitting}>Submit</button>
+                                                        <button type="submit" className="btn btn-primary" disabled={isSubmitting}>Enviar</button>
                                                         {isSubmitting &&
                                                             <img src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
                                                         }
