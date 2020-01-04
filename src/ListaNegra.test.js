@@ -6,7 +6,8 @@ import { act } from 'react-dom/test-utils';
 let container = document.createElement("div");
 
 beforeEach(() => {
-    container = document.createElement("tr");
+    container = document.createElement("table");
+    container = document.createElement("tbody");
     document.body.appendChild(container);
 });
 
