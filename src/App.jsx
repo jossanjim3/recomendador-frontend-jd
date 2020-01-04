@@ -60,9 +60,9 @@ class App extends React.Component {
                         <div className="container">
                             <div className="row">
                                 <div className="col-md-6 offset-md-3">
-                                    <Route path="/" component={Home} />
-                                    <Route path="/signin" component={Signin} />
-                                    <Route path="/signup" component={Signup} />
+                                    <Route exact path="/" component={Home} />
+                                    <Route exact path="/signin" component={Signin} />
+                                    <Route exact path="/signup" component={Signup} />
                                     <PrivateRoute exact path="/admin" component={Admin} />
                                     <PrivateRoute exact path="/myaccount" component={Myaccount} />
                                 </div>
