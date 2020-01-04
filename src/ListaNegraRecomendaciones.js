@@ -2,7 +2,7 @@ import React from 'react';
 import { Ring } from 'react-awesome-spinners';
 import ListaNegra from './ListaNegra.js';
 
-let test_token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6ImFkbWluIiwiaWF0IjoxNTc4MTUxNjg1LCJleHAiOjE1NzgxNTUyODV9.joGz9ESDocPsb2Jj3wtikgBcIzEq3OLi_erHJf4IduI';
+let test_token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6ImFkbWluIiwiaWF0IjoxNTc4MTU1Nzg5LCJleHAiOjE1NzgxNTkzODl9.jybsm0U_qDjv1kS1ypNI7r5qV_PZqsa8As2RIUUE8Y4';
 
 class ListaNegraRecomendaciones extends React.Component{
 
@@ -23,14 +23,14 @@ class ListaNegraRecomendaciones extends React.Component{
         //window.alert("test token: " + test_token);
 
         Promise.all([
-            fetch('http://localhost:3000/recomendador/listaNegra/peliculas', {
+            fetch('http://localhost:3000/recomendador/v1/listaNegra/peliculas', {
                 method: 'GET', // or 'PUT'
                 headers:{
                   'Content-Type': 'application/json',
                   'authorization' : test_token
                 }
             }),
-            fetch('http://localhost:3000/recomendador/listaNegra/series', {
+            fetch('http://localhost:3000/recomendador/v1/listaNegra/series', {
                 method: 'GET', // or 'PUT'
                 headers:{
                   'Content-Type': 'application/json',
@@ -104,7 +104,7 @@ class ListaNegraRecomendaciones extends React.Component{
     }
 
     deleteSerieListaNegra(idSerie){
-        const urlAPI = "http://localhost:3000/recomendador/listaNegra/serie/" + idSerie;
+        const urlAPI = "http://localhost:3000/recomendador/v1/listaNegra/serie/" + idSerie;
         var data = {username: 'example'};
         //window.alert(urlAPI);
 

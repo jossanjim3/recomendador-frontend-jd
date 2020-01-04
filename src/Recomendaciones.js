@@ -2,7 +2,7 @@ import React from 'react';
 import Slider from './Slider';
 import { Ring } from 'react-awesome-spinners';
 
-let test_token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6ImFkbWluIiwiaWF0IjoxNTc4MTUxNjg1LCJleHAiOjE1NzgxNTUyODV9.joGz9ESDocPsb2Jj3wtikgBcIzEq3OLi_erHJf4IduI';
+let test_token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6ImFkbWluIiwiaWF0IjoxNTc4MTU1Nzg5LCJleHAiOjE1NzgxNTkzODl9.jybsm0U_qDjv1kS1ypNI7r5qV_PZqsa8As2RIUUE8Y4';
 
 class Recomendaciones extends React.Component{
 
@@ -72,8 +72,8 @@ class Recomendaciones extends React.Component{
 
         return (
                 <div id="recomendacion_slides">                 
-                <Slider recomendacionesSlide = {this.state.peliculas} titulo = "Películas" tipo = "1"></Slider>
-                <Slider recomendacionesSlide = {this.state.series} titulo = "Series" tipo = "2"></Slider>
+                <Slider recomendacionesSlide = {this.state.peliculas} titulo = "Películas más populares recomendadas" tipo = "1"></Slider>
+                <Slider recomendacionesSlide = {this.state.series} titulo = "Series más populares recomendadas" tipo = "2"></Slider>
             </div>
         );
        

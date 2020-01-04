@@ -18,12 +18,12 @@ class Home extends React.Component {
             <div>
                 <h1>Bienvenido !</h1>
 
-                <h1>Recomendaciones</h1>
+                <hr></hr>
+                <h1>Recomendaciones Aleatorias</h1>
                 <Recomendaciones />
                 <hr></hr>
-                {/* comento la siguiente linea porque no me funciona el post y delete de la lista negra...
-                    Este componente devuelve una tabla con los id de las peliculas y series añadidas a la lista de no recomendadas */}
-                {/* <ListaNegraRecomendaciones /> */}
+                <h1>Listas no recomendadas</h1>
+                <ListaNegraRecomendaciones />
 
             </div>
         );
