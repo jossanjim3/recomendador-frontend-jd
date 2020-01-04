@@ -20,4 +20,9 @@ it ("renders Recomendaciones withput crashing", () => {
     act(() => {
         render(<ListaNegraRecomendaciones />, container);
     });
+
+    expect(container.hasChildNodes()).toBe(true);
+    expect(container).toEqual(expect.anything());
+    //expect(container.find('table')).toEqual(true);
+
 })

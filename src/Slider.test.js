@@ -17,6 +17,7 @@ afterEach(() => {
 });
 
 it ("renders Slider with data and title", () => {
+    const onclick = jest.fn();
     const titulo = 'Peliculas';
     const peliculas = [
         {
@@ -434,10 +435,8 @@ it ("renders Slider with data and title", () => {
     });
 
     expect(container.hasChildNodes()).toBe(true);
-    expect(container.textContent).toEqual(expect.stringContaining(titulo));
     expect(container).toEqual(expect.anything());
-    //expect(container.querySelector('div').classList.contains('slider')).toBe(true);
-    //expect(container.classList.contains('slider')).toBe(true);
-    //expect(container.findAll(recomendacionesSlide).length).toBe(peliculas.length);
+    expect(container.textContent).toEqual(expect.stringContaining(titulo));    
+    expect(container.textContent).toEqual(expect.stringContaining("Star Wars"));
 
 })

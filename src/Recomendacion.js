@@ -120,7 +120,7 @@ class Recomendacion extends React.Component{
                     <FrontSide
                         style={{backgroundColor: '#fff',}}>
                         
-                        <button type="button" name="boton_lista_negra" value={this.state.recomendacion.id} className="btn btn-danger boton_lista_negra" title="Añadir a la lista de No Recomendaciones" onClick={() => this.props.clickAddListaNegra(this.state.recomendacion.id,this.state.tipo)}>X</button>
+                        <button data-testid="clickedListaNegra" type="button" name="boton_lista_negra" value={this.state.recomendacion.id} className="btn btn-danger boton_lista_negra" title="Añadir a la lista de No Recomendaciones" onClick={() => this.props.clickAddListaNegra(this.state.recomendacion.id,this.state.tipo)}>X</button>
 
                         <img className="poster" src={urlPoster} alt="texto" title={tituloRecomendacion}/>
                         {/* <span>{this.state.recomendacion.id}</span> */}
