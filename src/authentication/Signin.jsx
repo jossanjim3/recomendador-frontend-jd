@@ -9,7 +9,7 @@ class Signin extends React.Component {
         super(props);
 
         // redirect to home if already logged in
-        if (authenticationService.currentUserValue) { 
+        if (authenticationService.currentTokenValue) { 
             this.props.history.push('/');
         }
     }
@@ -17,10 +17,6 @@ class Signin extends React.Component {
     render() {
         return (
             <div>
-                <div className="alert alert-info">
-                    Username: test<br />
-                    Password: test
-                </div>
                 <h2>Login</h2>
                 <Formik
                     initialValues={{

@@ -5,8 +5,8 @@ import { authenticationService } from './_services/authentication.service';
 
 export const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route {...rest} render={props => {
-        const currentUser = authenticationService.currentUserValue;
-        if (!currentUser) {
+        const currentToken = authenticationService.currentTokenValue;
+        if (!currentToken) {
             // not logged in so redirect to login page with the return url
             return <Redirect to={{ pathname: '/signin', state: { from: props.location } }} />
         }
