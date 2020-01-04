@@ -2,7 +2,7 @@ import React from 'react';
 import { Ring } from 'react-awesome-spinners';
 import ListaNegra from './ListaNegra.js';
 
-let test_token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6ImFkbWluIiwiaWF0IjoxNTc4MTU1Nzg5LCJleHAiOjE1NzgxNTkzODl9.jybsm0U_qDjv1kS1ypNI7r5qV_PZqsa8As2RIUUE8Y4';
+let test_token = process.env.REACT_APP_TEST_TOKEN;
 
 class ListaNegraRecomendaciones extends React.Component{
 

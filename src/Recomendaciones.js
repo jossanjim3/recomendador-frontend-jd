@@ -2,7 +2,7 @@ import React from 'react';
 import Slider from './Slider';
 import { Ring } from 'react-awesome-spinners';
 
-let test_token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6ImFkbWluIiwiaWF0IjoxNTc4MTU1Nzg5LCJleHAiOjE1NzgxNTkzODl9.jybsm0U_qDjv1kS1ypNI7r5qV_PZqsa8As2RIUUE8Y4';
+let test_token = process.env.REACT_APP_TEST_TOKEN;
 
 class Recomendaciones extends React.Component{
 
@@ -30,7 +30,8 @@ class Recomendaciones extends React.Component{
         this.setState({ isLoading: true });
 
         //var url_api = (process.env.URL_API_RECOMENDADOR || 'http://localhost:3000/);
-        //window.alert("test token: " + test_token);
+        
+        //window.alert("test token ENV: " + process.env.REACT_APP_TEST_TOKEN);
 
         Promise.all([
             //fetch('https://api.themoviedb.org/3/movie/popular?api_key=18268e82edbd92497a6d18853ddf8c57&language=es-ES'),
