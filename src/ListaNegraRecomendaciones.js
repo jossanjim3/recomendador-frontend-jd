@@ -2,6 +2,8 @@ import React from 'react';
 import { Ring } from 'react-awesome-spinners';
 import ListaNegra from './ListaNegra.js';
 
+let test_token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6ImFkbWluIiwiaWF0IjoxNTc4MTUxNjg1LCJleHAiOjE1NzgxNTUyODV9.joGz9ESDocPsb2Jj3wtikgBcIzEq3OLi_erHJf4IduI';
+
 class ListaNegraRecomendaciones extends React.Component{
 
     constructor(props){
@@ -17,10 +19,24 @@ class ListaNegraRecomendaciones extends React.Component{
     
     componentDidMount(){
         this.setState({ isLoading: true });
+        
+        //window.alert("test token: " + test_token);
 
         Promise.all([
-            fetch('http://localhost:3000/recomendador/listaNegra/peliculas'),
-            fetch('http://localhost:3000/recomendador/listaNegra/series')
+            fetch('http://localhost:3000/recomendador/listaNegra/peliculas', {
+                method: 'GET', // or 'PUT'
+                headers:{
+                  'Content-Type': 'application/json',
+                  'authorization' : test_token
+                }
+            }),
+            fetch('http://localhost:3000/recomendador/listaNegra/series', {
+                method: 'GET', // or 'PUT'
+                headers:{
+                  'Content-Type': 'application/json',
+                  'authorization' : test_token
+                }
+            })
         ])
         .then(([res11, res22]) => Promise.all([res11.json(), res22.json()]))
         .then(([data11, data22]) => this.setState({
@@ -63,12 +79,13 @@ class ListaNegraRecomendaciones extends React.Component{
         const urlAPI = "http://localhost:3000/recomendador/v1/listaNegra/pelicula/" + idPelicula;
         var data = {username: 'example'};
         //window.alert(urlAPI);
-        
+            
         fetch(urlAPI, {
             method: 'DELETE', // or 'PUT'
-            body: JSON.stringify(data), // data can be `string` or {object}!
+            //body: JSON.stringify(data), // data can be `string` or {object}!
             headers:{
-              'Content-Type': 'application/json'
+              'Content-Type': 'application/json',
+              'authorization' : test_token
             }
           }).then(res => res.json())          
           .then(response => {
@@ -90,12 +107,13 @@ class ListaNegraRecomendaciones extends React.Component{
         const urlAPI = "http://localhost:3000/recomendador/listaNegra/serie/" + idSerie;
         var data = {username: 'example'};
         //window.alert(urlAPI);
-        
+
         fetch(urlAPI, {
             method: 'DELETE', // or 'PUT'
-            body: JSON.stringify(data), // data can be `string` or {object}!
+            //body: JSON.stringify(data), // data can be `string` or {object}!
             headers:{
-              'Content-Type': 'application/json'
+              'Content-Type': 'application/json',
+              'authorization' : test_token
             }
           }).then(res => res.json())
           .catch(error => window.alert('Error:', error))

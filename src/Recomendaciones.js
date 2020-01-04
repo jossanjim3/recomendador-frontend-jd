@@ -2,6 +2,8 @@ import React from 'react';
 import Slider from './Slider';
 import { Ring } from 'react-awesome-spinners';
 
+let test_token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6ImFkbWluIiwiaWF0IjoxNTc4MTUxNjg1LCJleHAiOjE1NzgxNTUyODV9.joGz9ESDocPsb2Jj3wtikgBcIzEq3OLi_erHJf4IduI';
+
 class Recomendaciones extends React.Component{
 
     constructor(props){
@@ -26,27 +28,26 @@ class Recomendaciones extends React.Component{
     
     componentDidMount(){
         this.setState({ isLoading: true });
+
         //var url_api = (process.env.URL_API_RECOMENDADOR || 'http://localhost:3000/);
+        //window.alert("test token: " + test_token);
 
         Promise.all([
             //fetch('https://api.themoviedb.org/3/movie/popular?api_key=18268e82edbd92497a6d18853ddf8c57&language=es-ES'),
             //fetch('https://api.themoviedb.org/3/tv/popular?api_key=18268e82edbd92497a6d18853ddf8c57&language=es-ES')
 
-            //fetch(url_api + 'recomendador/v1/aleatorio/peliculas'),
-            //fetch(url_api + 'recomendador/v1/aleatorio/series')
-
             fetch('http://localhost:3000/recomendador/v1/aleatorio/peliculas', {
                 method: 'GET', // or 'PUT'
                 headers:{
                   'Content-Type': 'application/json',
-                  'authorization' : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6ImFkbWluIiwiaWF0IjoxNTc4MTQ2NTQyLCJleHAiOjE1NzgxNTAxNDJ9.9Mbvqx_C0IkgkXcZmr7ZY3bLozjgw1SYkE6SwtWLocc'
+                  'authorization' : test_token
                 }
             }),
             fetch('http://localhost:3000/recomendador/v1/aleatorio/series', {
                 method: 'GET', // or 'PUT'
                 headers:{
                   'Content-Type': 'application/json',
-                  'authorization' : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6ImFkbWluIiwiaWF0IjoxNTc4MTQ2NTQyLCJleHAiOjE1NzgxNTAxNDJ9.9Mbvqx_C0IkgkXcZmr7ZY3bLozjgw1SYkE6SwtWLocc'
+                  'authorization' : test_token
                 }
             })
         ])

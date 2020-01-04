@@ -2,6 +2,8 @@ import React from 'react';
 import Recomendacion from './Recomendacion';
 import Whirligig from 'react-whirligig';
 
+let test_token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6ImFkbWluIiwiaWF0IjoxNTc4MTUxNjg1LCJleHAiOjE1NzgxNTUyODV9.joGz9ESDocPsb2Jj3wtikgBcIzEq3OLi_erHJf4IduI';
+
 class Slider extends React.Component{
 
     constructor(props){
@@ -57,17 +59,18 @@ class Slider extends React.Component{
         
         fetch(urlAPI, {
             method: 'POST', // or 'PUT'
-            body: JSON.stringify(data), // data can be `string` or {object}!
+            //body: JSON.stringify(data), // data can be `string` or {object}!
             headers:{
-              'Content-Type': 'application/json'
+              'Content-Type': 'application/json',
+              'authorization' : test_token
             }
-          }).then(res => res.json())
-          .catch(error => window.alert('Error:', error))
+          }).then(res => res.json())          
           .then(response => {
               //window.alert('Success:', response)
               this.removeRecomendacionFromArray(idPelicula);
               window.alert("Pelicula añadida a la lista no recomendada!");
-          });      
+          })
+          .catch(error => window.alert('Error:', error));      
 
     }
 
@@ -78,9 +81,10 @@ class Slider extends React.Component{
         
         fetch(urlAPI, {
             method: 'POST', // or 'PUT'
-            body: JSON.stringify(data), // data can be `string` or {object}!
+            //body: JSON.stringify(data), // data can be `string` or {object}!
             headers:{
-              'Content-Type': 'application/json'
+              'Content-Type': 'application/json',
+              'authorization' : test_token
             }
           }).then(res => res.json())
           .catch(error => window.alert('Error:', error))
@@ -129,7 +133,7 @@ class Slider extends React.Component{
                     </tbody>
                 </table>                                                   
 
-                <Whirligig id="sliderComponent" visibleSlides={5} gutter="1em">
+                <Whirligig id="sliderComponent" visibleSlides={2} gutter="1em">
                     {this.state.recomendacionesSlide.slice(0,this.state.value).map((recomendacion) => 
                         <Recomendacion key = {recomendacion.id} recomendacion = {recomendacion} tipo = {this.state.tipo} clickAddListaNegra={this.handleListaNegra}/>
                     )
