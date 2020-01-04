@@ -1,6 +1,7 @@
 import React from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { toast } from 'react-toastify';
 
 import { authenticationService } from '../_services/authentication.service';
 import { userService } from '../_services/user.service';
@@ -47,6 +48,17 @@ class Myaccount extends React.Component {
         userService.getUser().then(user => this.setState({user: user}));
     }
 
+    successEdit = (message) => {
+        toast.success(message, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true
+            });
+    }
+
     render() {
         const { user, editEmail, editPassword } = this.state;
         return (
@@ -88,9 +100,10 @@ class Myaccount extends React.Component {
                                                 setStatus();
                                                 authenticationService.edit(password, email)
                                                     .then(
-                                                        user => {
+                                                        () => {
                                                             this.updateUser();
                                                             this.handleCancelEditEmail();
+                                                            this.successEdit("Email successfully modified");
                                                         },
                                                         error => {
                                                             setSubmitting(false);
@@ -144,8 +157,9 @@ class Myaccount extends React.Component {
                                                 setStatus();
                                                 authenticationService.edit(password, email)
                                                     .then(
-                                                        user => {
+                                                        () => {
                                                             this.handleCancelEditPassword();
+                                                            this.successEdit("Password successfully modified");
                                                         },
                                                         error => {
                                                             setSubmitting(false);

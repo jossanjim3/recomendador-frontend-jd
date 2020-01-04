@@ -1,5 +1,7 @@
 import React from 'react';
 import { Router, Route, Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { PrivateRoute } from './PrivateRoute';
 import Home from './pages/Home';
@@ -18,6 +20,8 @@ class App extends React.Component {
         this.state = {
             currentToken: null
         };
+
+        toast.configure()
     }
 
     componentDidMount() {

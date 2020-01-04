@@ -31,7 +31,7 @@ class Signin extends React.Component {
                         setStatus();
                         authenticationService.login(username, password)
                             .then(
-                                user => {
+                                () => {
                                     const { from } = this.props.location.state || { from: { pathname: "/" } };
                                     this.props.history.push(from);
                                 },

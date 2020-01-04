@@ -1,6 +1,7 @@
 import React from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { toast } from 'react-toastify';
 
 import { authenticationService } from '../_services/authentication.service';
 
@@ -12,6 +13,17 @@ class Signup extends React.Component {
     if (authenticationService.currentTokenValue) { 
       this.props.history.push('/');
     }
+  }
+
+  success = () => {
+    toast.success('Your account has been successfully created, please log in.', {
+      position: "top-right",
+      autoClose: 10000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true
+      });
   }
 
   render() {
@@ -35,8 +47,9 @@ class Signup extends React.Component {
             setStatus();
             authenticationService.signup(username, password, email)
               .then(
-                user => {
-                  const { from } = this.props.location.state || { from: { pathname: "/" } };
+                () => {
+                  this.success();
+                  const { from } = this.props.location.state || { from: { pathname: "/signin" } };
                   this.props.history.push(from);
                 },
                 error => {
