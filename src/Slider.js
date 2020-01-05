@@ -14,7 +14,8 @@ class Slider extends React.Component{
             value: 5, // por defecto 5
             titulo : this.props.titulo, // titulo del slider
             slideIndex : 1, // indice del slice, comienza por el primer elemento
-            tipo : this.props.tipo // tipo 1 => pelicula, tipo 2 => serie
+            tipo : this.props.tipo, // tipo 1 => pelicula, tipo 2 => serie
+            visibleSlides : this.props.visibleSlides // numero de recomendaciones visibles en el scroll
         };
         this.handleListaNegra = this.handleListaNegra.bind(this);
     }
@@ -53,7 +54,10 @@ class Slider extends React.Component{
     }
 
     addPeliculaListaNegra(idPelicula){
-        const urlAPI = "http://localhost:3000/recomendador/v1/listaNegra/pelicula/" + idPelicula;
+        const url_api = (process.env.REACT_APP_URL_API_RECOMENDADOR); // http://localhost:3000/recomendador/v1/
+        //const urlAPI = "http://localhost:3000/recomendador/v1/listaNegra/pelicula/" + idPelicula;
+        var urlAPI = url_api + "listaNegra/pelicula/" + idPelicula;
+        
         var data = {username: 'example'};
         //window.alert(urlAPI);
         
@@ -75,7 +79,11 @@ class Slider extends React.Component{
     }
 
     addSerieListaNegra(idSerie){
-        const urlAPI = "http://localhost:3000/recomendador/v1/listaNegra/serie/" + idSerie;
+        
+        const url_api = (process.env.REACT_APP_URL_API_RECOMENDADOR); // http://localhost:3000/recomendador/v1/
+        //const urlAPI = "http://localhost:3000/recomendador/v1/listaNegra/serie/" + idSerie;
+        var urlAPI = url_api + "listaNegra/serie/" + idSerie;
+
         var data = {username: 'example'};
         //window.alert(urlAPI);
         
@@ -133,7 +141,7 @@ class Slider extends React.Component{
                     </tbody>
                 </table>                                                   
 
-                <Whirligig id="sliderComponent" visibleSlides={5} gutter="1em">
+                <Whirligig id="sliderComponent" visibleSlides={this.state.visibleSlides} gutter="1em">
                     {this.state.recomendacionesSlide.slice(0,this.state.value).map((recomendacion) => 
                         <Recomendacion key = {recomendacion.id} recomendacion = {recomendacion} tipo = {this.state.tipo} clickAddListaNegra={this.handleListaNegra}/>
                     )

@@ -9,63 +9,76 @@ class Recomendaciones extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            peliculas: [],
-            series : [],
+            recomendaciones : [],
             isLoading: false,
+            tipoRecomendacion : this.props.tipoRecomendacion, // 1 -> aleatorio, 2 -> por similitud
+            categoria : this.props.categoria, // 1 -> peliculas, 2 -> series
+            idRecomendacion : this.props.idRecomendacion,
+            titulo : "",
+            visibleSlides : this.props.visibleSlides // numero de recomendaciones visibles en el scroll
         };
     }    
     
-    /* // solo una llamada
+    // solo una llamada
     componentDidMount(){
-        this.setState({ isLoading: true });
 
-        //fetch('http://localhost:3000/recomendador/aleatorio/peliculas')
-        fetch('https://api.themoviedb.org/3/movie/popular?api_key=18268e82edbd92497a6d18853ddf8c57&language=es-ES')
-
-        .then(response => response.json())
-        .then(data => this.setState({ peliculas: data.results, isLoading: false }));
-    } */
-    
-    componentDidMount(){
-        this.setState({ isLoading: true });
-
-        //var url_api = (process.env.URL_API_RECOMENDADOR || 'http://localhost:3000/);
-        
         //window.alert("test token ENV: " + process.env.REACT_APP_TEST_TOKEN);
 
-        Promise.all([
-            //fetch('https://api.themoviedb.org/3/movie/popular?api_key=18268e82edbd92497a6d18853ddf8c57&language=es-ES'),
-            //fetch('https://api.themoviedb.org/3/tv/popular?api_key=18268e82edbd92497a6d18853ddf8c57&language=es-ES')
+        this.setState({ isLoading: true });
+        
+        var categoria = this.state.categoria;
+        //window.alert("categoria: " + categoria);
 
-            fetch('http://localhost:3000/recomendador/v1/aleatorio/peliculas', {
-                method: 'GET', // or 'PUT'
-                headers:{
-                  'Content-Type': 'application/json',
-                  'authorization' : test_token
-                }
-            }),
-            fetch('http://localhost:3000/recomendador/v1/aleatorio/series', {
-                method: 'GET', // or 'PUT'
-                headers:{
-                  'Content-Type': 'application/json',
-                  'authorization' : test_token
-                }
-            })
-        ])
-        .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
-        .then(([data1, data2]) => this.setState({
-            peliculas: data1.results, 
-            series: data2.results,
-            isLoading: false
-        }));
-    }
+        var tipoRecomendacion = this.state.tipoRecomendacion;
+        //window.alert("tipoRecomendacion: " + tipoRecomendacion);
+
+        var idRecomendacion = this.state.idRecomendacion;
+        //window.alert("idRecomendacion: " + idRecomendacion);
+
+        var url_api = (process.env.REACT_APP_URL_API_RECOMENDADOR); // http://localhost:3000/recomendador/v1/
+        //window.alert("REACT_APP_URL_API_RECOMENDADOR: " + url_api);
+        
+        // transformamos la url
+        if (tipoRecomendacion == "2"){ // por similitudes
+            if(categoria == "1"){ // peliculas
+                url_api = url_api + 'porSimilitudes/pelicula/' + idRecomendacion;
+                this.setState({ titulo : 'Películas similares recomendadas' });
+            } else if (categoria == "2") { // series
+                url_api = url_api + 'porSimilitudes/serie/' + idRecomendacion;
+                this.setState({ titulo : 'Series similares recomendadas' });
+            }
+
+        } else { // aleatorio
+            if(categoria == "1"){ // peliculas
+                url_api = url_api + 'aleatorio/peliculas';
+                this.setState({ titulo : 'Películas aleatorias recomendadas' });
+            } else if (categoria == "2") { // series
+                url_api = url_api + 'aleatorio/series'; 
+                this.setState({ titulo : 'Series aleatorias recomendadas' });
+            }
+        }
+
+        //window.alert("url_api: " + url_api);
+                
+        //fetch('https://api.themoviedb.org/3/movie/popular?api_key=18268e82edbd92497a6d18853ddf8c57&language=es-ES')
+        //fetch('http://localhost:3000/recomendador/aleatorio/peliculas')
+        fetch(url_api, {
+            method: 'GET', // or 'PUT'
+            headers:{
+              'Content-Type': 'application/json',
+              'authorization' : test_token
+            }
+        })
+        .then(response => response.json())
+        .then(data => this.setState({ recomendaciones: data.results, isLoading: false }));
+    }        
 
     render(){
                  
         if (this.state.isLoading) {
             return (
                 <div>
-                    <p>Loading Películas y Series...</p>
+                    <p>Cargando recomendaciones...</p>
                     <Ring />
                 </div>                                
             );
@@ -73,8 +86,7 @@ class Recomendaciones extends React.Component{
 
         return (
                 <div id="recomendacion_slides">                 
-                <Slider recomendacionesSlide = {this.state.peliculas} titulo = "Películas más populares recomendadas" tipo = "1"></Slider>
-                <Slider recomendacionesSlide = {this.state.series} titulo = "Series más populares recomendadas" tipo = "2"></Slider>
+                <Slider recomendacionesSlide = {this.state.recomendaciones} titulo = {this.state.titulo} tipo = {this.state.categoria} visibleSlides = {this.state.visibleSlides}></Slider>
             </div>
         );
        
