@@ -87,7 +87,6 @@ class Recomendaciones extends React.Component{
         return (
                 <div id="recomendacion_slides">                 
                 <Slider recomendacionesSlide = {this.state.recomendaciones} titulo = {this.state.titulo} tipo = {this.state.categoria} visibleSlides = {this.state.visibleSlides}></Slider>
-                {/* <Slider recomendacionesSlide = {this.state.series} titulo = "Series populares recomendadas" tipo = "2"></Slider> */}
             </div>
         );
        
