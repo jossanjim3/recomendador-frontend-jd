@@ -18,19 +18,25 @@ class ListaNegraRecomendaciones extends React.Component{
     }    
     
     componentDidMount(){
-        this.setState({ isLoading: true });
-        
+        this.setState({ isLoading: true });        
         //window.alert("test token: " + test_token);
 
+        const url_api = (process.env.REACT_APP_URL_API_RECOMENDADOR); // http://localhost:3000/recomendador/v1/
+
+        var urlListaNegraPeliculas = "";
+        var urlListaNegraSeries    = "";
+
+        urlListaNegraPeliculas = url_api + 'listaNegra/peliculas';
+        urlListaNegraSeries    = url_api + 'listaNegra/series';
         Promise.all([
-            fetch('http://localhost:3000/recomendador/v1/listaNegra/peliculas', {
+            fetch(urlListaNegraPeliculas, {
                 method: 'GET', // or 'PUT'
                 headers:{
                   'Content-Type': 'application/json',
                   'authorization' : test_token
                 }
             }),
-            fetch('http://localhost:3000/recomendador/v1/listaNegra/series', {
+            fetch(urlListaNegraSeries, {
                 method: 'GET', // or 'PUT'
                 headers:{
                   'Content-Type': 'application/json',
@@ -135,7 +141,7 @@ class ListaNegraRecomendaciones extends React.Component{
         if (this.state.isLoading) {
             return (
                 <div>
-                    <p>Loading Lista de Películas y Series no recomendadas...</p>
+                    <p>Cargando lista de películas y series no recomendadas...</p>
                     <Ring />
                 </div>                                
             );
