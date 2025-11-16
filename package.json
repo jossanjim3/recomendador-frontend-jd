@@ -11,7 +11,7 @@
     "react-bootstrap": "^1.0.0-beta.16",
     "react-dom": "^16.12.0",
     "react-flippy": "^0.1.5",
-    "react-scripts": "^3.3.0",
+    "react-scripts": "^5.0.1",
     "react-whirligig": "^6.5.14",
     "styled-components": "^4.4.1",
     "whirligig": "^1.0.0",
@@ -43,7 +43,7 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^2.9.0",
     "@typescript-eslint/parser": "^2.9.0",
-    "eslint": "^6.7.2",
+    "eslint": "^9.39.1",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
